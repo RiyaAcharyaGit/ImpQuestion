@@ -1,0 +1,1006 @@
+1. can we call main method from another class?
+
+Yes, you can call the main method from another class. As main method is static so you can call the main method by Class name. However, it is important to note that the main method is 
+the entry point of a Java application and is executed by the Java Virtual Machine (JVM) when you run your program. When you call the main method from another class, you are essentially 
+creating a new instance of the class that contains the main method.
+
+2. Is JDK required on each machine to run a Java program?
+/
+No, JDK (Java Development Kit) isn't required on each machine to run a Java program. Only JRE is required, it is an implementation of the Java Virtual machine (JVM),
+which actually executes Java programs. JDK is development Kit of Java and is required for development only.
+
+3. What is a package?
+
+A java package is a group of similar types of classes, interfaces and sub-packages. Package in java can be categorized in two types thats are built-in package and user-defined package.
+There are many built-in packages such as java, lang, awt, javax, swing etc.
+  Advantage of package in java:
+  . Java package is used to categorize the classes and interfaces so that they can be easily maintained.
+  . Java package provides access protection.
+  . Java package removes naming collision.
+
+**** The default access modifier allows the class to be accessed only within the same package, making it package-private or package-local. 
+
+4. How many types of memory areas are allocated by JVM?
+There are five type of memory allocated by JVM:
+   .Class(Method) Area
+   .Heap
+   .Stack
+   .Program Counter Register
+   .Native Method Stack
+   
+   Class Area: The class area is used to store class-related data such as class names, method s	ignatures, and 
+		constant values in the JVM, while the heap is used to store object-related data. 
+               In Java, static methods and variables are also stored in the class area as these are the class property.
+
+   Heap Area:  The heap in the JVM that is used to store objects related data and their instance data. The heap memory is responsible for allocating memory for new objects and 
+               removing the data from memory by GC that is no longer being used.
+
+   Stack Area: In Java, the stack memory is used to store method invocations and local variables. When a method is invoked, a new block of memory is created on the stack memory
+               for that method, and any local variables and method arguments that are defined within that method are stored in that block of memory. 
+
+   Program Counter Register: The Program Counter Register (PC) is a special register in the CPU that is used by the Java Virtual Machine (JVM) to keep track of the execution of the program.
+   
+  Native Method Stack: The Native Method Stack in Java is a region of memory that is used to store the execution of native methods.
+
+5. When we declare any method or any variable as static then in which memory they are stored in java?
+   In Java, static methods and variables are stored in the class area of the Java Virtual Machine (JVM) memory. The class area is a shared region of memory that is used
+   to store class-related data, such as class names, method signatures, and constant values. Static methods and variables are associated with a class rather than with individual objects 
+   of the class. When a class is loaded into the JVM, the static methods and variables of that class are also loaded into the class area, where they can be accessed by any instance of 
+   the class without the need for an object reference.
+ 
+6. What is class loader in java?
+The class loader in Java is a subsystem of the Java Virtual Machine (JVM) that is responsible for loading class files into the JVM. The class loader is responsible for finding
+and loading class files that are required by the program. There are several built-in class loaders in the JVM, 
+including the bootstrap class loader, the extension class loader, and the system class loader.
+
+7. List primitive Java types?
+Primitive types are the most basic data types available within the Java language. 
+The eight primitive data types supported by the Java programming language are: boolean, char, byte, short, int, long, float and double.
+
+8. Is null a keyword?
+No, null is not a keyword . The null is a literal similar to true and false in java, but it is a character string that is treated specially by the compiler if the compiler 
+encounters it in a java source file . It treated as a reserved word in java language.
+
+9. Are true and false keywords?
+No, true, false, and null are not Java keywords , they are literals. Literal means which are actual values not the variable names.They treated as reserved words in java language 
+and you cannot use them as identifiers in your programs.
+
+10. What is Casting ?
+Casting is the the process of converting a value of one data type to another data type.
+There are two types of casting in Java:
+   1. Widening / implicit/ UpCasting: This is when you convert a value of a smaller data type to a value of a larger data type. For example, converting an int to a double. 
+      This type of casting is done automatically by the Java compiler.
+   2. Narrowing / Explicit/ DownCasting: This is when you convert a value of a larger data type to a value of a smaller data type. For example, converting a double to an int. 
+      This type of casting requires an explicit cast operator, and can result in a loss of precision or information.
+
+11. What is the default value of Boolean?
+The default value for a boolean (primitive) is false. And The default value for a Boolean (object) is null.
+
+12. What is default value of a local variables?
+The local variables are not initialized to any default values. It should not take any default value.
+
+13. What is the importance of main method in Java?
+The main method is an essential part of a Java program, and it is the entry point for the program's execution. 
+
+It has the following importance: 
+   Execution: When you run a Java program, the main method is the first method that is executed. It is the starting point of the program's execution.
+   Control: The main method controls the flow of the program. It calls other methods and performs various operations.
+   Arguments: The main method can take command-line argumentsas an input. These arguments are passed as a string array to the main method.
+   Testing: The main method can be used for testing and debugging purposes.
+
+14. How the main Method Gets Call?
+   In Java The main method is called automatically by the Java Virtual Machine (JVM) when you run a Java program. 
+   Here is how the main method gets called:
+   Compilation: First, you need to compile your Java source code into bytecode using a Java compiler. This generates a .class file for your program.
+   Loading: Next, the JVM loads the .class file into memory.
+   Verification: The JVM verifies the bytecode to ensure that it is valid and does not violate any security constraints.
+   Initialization: The JVM initializes the class and its static variables.
+   Execution: Finally, the JVM finds the main method in the class and executes it, starting the program's execution.
+
+15. Why is the main() method declared static?
+The main() method is declared static in Java to indicate that is class property means it belongs to the class and can be accessed without creating an instance, 
+and to have the standard signature that is recognized by the JVM as the entry point of the program.
+The main() method must be declared public, static, and void. It must accept a single argument that is an array of strings. 
+
+16. Can we execute a program without main() method?
+
+No, you cannot execute a Java program without a main() method. The main() method is the entry point of a Java program and is required by the Java Virtual Machine (JVM) to start 
+the program's execution. When you run a Java program, the JVM looks for a method with the signature "public static void main(String[] args)" in the class that you specified. 
+If the main() method is not found or has a different signature, the program will not execute.
+ 
+17. Should a main() method be compulsorily declared in all java classes?
+No, a main() method is not required to be declared in all Java classes. The main() method is only required in the class that serves as the entry point for the Java program.
+If you want to run a Java program from the command line using the java command, you need to have a class with a main() method. The JVM looks for the main() method to start the 
+program's execution. If you don't provide this method in the class, you will get a runtime error when you try to run the program.
+
+18. what is fail fast and fail safe in java?
+
+Fail fast: This is the default behavior of many Java collections. In a fail-fast collection, if a collection is modified while it is being iterated over, the iterator throws a 
+ConcurrentModificationException. 
+Fail safe: A fail-safe collection is designed to continue operating even if the collection is modified while it is being iterated over. In a fail-safe collection, 
+the iterator makes a copy of the collection and iterates over the copy. This approach is generally slower than fail-fast, but it can be useful in some situations where you need 
+to avoid ConcurrentModificationExceptions or other concurrency issues. copyonwriteArrayList,Concurrent Hashmap.
+import java.util.concurrent.CopyOnWriteAr1`rayList;
+import java.util.Iterator;
+
+public class FailSafeExample {
+    public static void main(String[] args) {
+        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+            list.add("D"); // Safe modification
+        }
+        
+        System.out.println(list); // Output: [A, B, C, D, D, D]
+    }
+}
+
+
+19. what is concurrent HashMap in java?
+**ConcurrentHashMap is a powerful tool that can be used to store and retrieve elements in a thread-safe manner 
+ConcurrentHashMap is a thread-safe implementation of the Map interface in Java that allows multiple threads to read and write to the map concurrently, without the need for
+external synchronization. It was introduced in Java 5 as a part of the java.util.concurrent package.  ConcurrentHashMap is a useful tool for building high-performance.
+One of the key features of ConcurrentHashMap is that it provides locking, meaning that it locks only the portion of the map being modified, rather than the 
+entire map. This makes it highly scalable and efficient for concurrent operations.
+mport java.util.concurrent.ConcurrentHashMap;
+
+public class Example {
+
+    public static void main(String[] args) {
+        ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+
+        // Put some elements in the map
+        map.put("key1", 1);
+        map.put("key2", 2);
+        map.put("key3", 3);
+
+        // Get an element from the map
+        Integer value = map.get("key1");
+        System.out.println(value); // 1
+
+        // Modify an element in the map
+	//locking by one thred and other thread can accsess remaining part
+        map.put("key1", 4);
+
+        // Iterate over the map
+        for (String key : map.keySet()) {
+            System.out.println(key + ": " + map.get(key));
+        }
+    }
+}
+
+20. What is copyOnWriteArrayList in java?
+CopyOnWriteArrayList is a thread-safe implementation of the List interface in Java that provides a way to safely modify a list while it is being iterated over. It was introduced in Java 5 
+as part of the java.util.concurrent package. 
+In a CopyOnWriteArrayList, the original list is never modified directly. Instead, when an element is added, updated, or removed from the list, a new copy of the entire list is created with 
+the modification applied, and the reference to the list is updated to point to the new copy. This ensures that any ongoing iterations of the list will not be affected by the modification.
+
+21.Does the order of public and static declaration matter in main()?
+No, the order of the public and static modifiers in the main() method signature does not matter. Both modifiers are access modifiers that can be applied in any order.
+public static void main(String[] args) and static public void main(String[] args) both are same.
+
+22. Can main() method in Java can return any data?
+The return type of the main() method is void, which means that it does not return any value. You can't change the return type of main() . Once the main is finished the program is dead, 
+so you don't have any benefit from that.
+
+23. How we can execute any code even before main method in Java?
+In Java, you can execute code even before the main() method is called by using a static block. A static block is a block of code that is executed when the class is loaded,
+while a static method is a method that can be called without creating an instance of the class.
+Example:
+public class Example {
+   static {
+        // Code to execute before main method
+        System.out.println("Hello from static block!");
+    }
+
+    public static void main(String[] args) {
+        // Call setup method before main method code
+        setup();
+        
+        // Main method code
+        System.out.println("Hello from main method!");
+    }
+}
+
+Output: Hello from static block!
+        Hello from main method!
+
+24. Can I override a static methods in Java?
+No, it is not possible to override a static method in Java. When a method is declared as static, it belongs to the class, not to any instance of the class. 
+This means that the method is not associated with any specific object and cannot be overridden by subclasses.However, if a subclass defines a static method with the same name
+as a static method in the superclass, it is not considered as method overriding, but rather method hiding. This means that the subclass method "hides" the superclass method, 
+and the two methods are distinct and unrelated.
+
+** Static methods are associated with the class itself rather than with instances of the class, and they are resolved at compile time.
+Example:
+class A {
+    public static void staticMethod() {
+        System.out.println("Static method in A");
+    }
+}
+
+class B extends A {
+    public static void staticMethod() {
+        System.out.println("Static method in B");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        A.staticMethod();
+        B.staticMethod();
+    }
+}
+Output: Static method in A
+        Static method in B 
+
+
+25. What are the restriction imposed on a static method or a static block of code?
+a. Static methods cannot access instance variables or instance methods directly, since they are not associated with any instance of the class. They can only access other static methods 
+and static variables, as well as local variables and parameters passed to the method.
+b. Static methods cannot use the this keyword to refer to the current instance of the class, since there is no current instance of the class when the static method is called.
+c. Static blocks of code can only access static variables and static methods, and cannot access instance variables or instance methods directly.
+d. Static blocks of code are executed only once, when the class is first loaded into memory, and cannot be executed again.
+e. Static methods and static blocks of code cannot be overridden by subclasses, as mentioned in the previous answer.
+
+26. Can we call a non-static method from inside a static method?
+Yes, it is possible to call a non-static method from inside a static method in Java, but you need to have an instance of the class to call the non-static method. To call a non-static
+method from a static method, you need to create an object of the class and then use that object to call the non-static method. 
+Here is an example:
+public class Example {
+    public void nonStaticMethod() {
+        System.out.println("This is a non-static method");
+    }
+
+    public static void staticMethod() {
+        Example obj = new Example();
+        obj.nonStaticMethod();
+    }
+
+    public static void main(String[] args) {
+        staticMethod();
+    }
+}
+
+27. Can you override a private or static method in Java?
+In Java, you cannot override a private method, but you can define a new private method with the same name in a subclass. This is not considered method overriding because private
+methods are not visible outside their own class and cannot be accessed by subclasses. On the other hand, static methods can be "hidden" by redefining them in a subclass, but this
+is not considered method overriding either. When a static method is redefined in a subclass, the original method is still present in the superclass and is not affected by the 
+redefinition in the subclass.
+Example:
+class SuperClass {
+    private void privateMethod() {
+        System.out.println("This is a private method in SuperClass");
+    }
+
+    public static void staticMethod() {
+        System.out.println("This is a static method in SuperClass");
+    }
+}
+
+class SubClass extends SuperClass {
+    private void privateMethod() {
+        System.out.println("This is a new private method in SubClass");
+    }
+
+    public static void staticMethod() {
+        System.out.println("This is a new static method in SubClass");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SuperClass obj1 = new SuperClass();
+        SubClass obj2 = new SubClass();
+        obj1.privateMethod(); // This will not compile because privateMethod() is not visible outside of SuperClass
+        obj2.privateMethod(); // This will not compile because privateMethod() is not visible outside of SubClass
+        SuperClass.staticMethod(); // This will call the staticMethod() in SuperClass
+        SubClass.staticMethod(); // This will call the new staticMethod() in SubClass
+    }
+}
+
+Or
+why static and private method is not overriden in java?
+In Java, static and private methods cannot be overridden because they are bound to their respective classes and not to objects.
+A static method is associated with a class rather than with an instance of the class. When you call a static method, you call it on the class rather than on an object of the class.
+Since static methods belong to the class and not to the object, they cannot be overridden.
+A private method is not accessible outside the class in which it is defined. Therefore, there is no way for a subclass to override a private method, because the subclass cannot access
+the private method in the first place.
+
+28. Can functional interface extend another functional interface ?
+Actually ans is No.
+A functional interface can extends another interface only when it does not have any abstract method.but if the interface does not contain any method then that is not a functional interface.t
+
+29. what is the significance of hashCode() method in java?
+**
+The hashCode() method in Java is a method that is defined in the Object class. It is used to return an integer value that represents the object.
+. Hash table performance: One of the main uses of hashCode() is in hash tables, which are widely used in Java collections such as HashMap, HashSet, and Hashtable. Hash tables use the 
+hash code of an object to determine its position in the table, which allows for efficient storage and retrieval of objects. If two objects have the same hash code, they can be stored in 
+the same "bucket" of the hash table.
+. Object equality: The hashCode() method is also used in conjunction with the equals() method to determine if two objects are equal. If two objects are equal according to the equals() 
+method, then their hash codes should also be equal.
+
+30. what is the significance of equals() method in java?
+The equals() method is significant in Java because it provides a way to compare objects for equality based on their values rather than their memory location.
+It's important to note that when you override the equals() method, you should also override the hashCode() method to ensure that objects that are equal return the same hash code.
+
+31. what is the relation between equals() method and hashCode() method in java?
+The equals() method and hashCode() method in Java are related because they both deal with the concept of object equality. When you override the equals() method in a class, you should also
+override the hashCode() method to ensure that objects that are equal return the same hash code. This is necessary for the proper functioning of collections such as HashSet and HashMap.
+. Hash table performance: Hash table performance: One of the main uses of hashCode() is in hash tables, which are widely used in Java collections such as HashMap, HashSet, and Hashtable. Hash tables use the 
+hash code of an object to determine its position in the table, which allows for efficient storage and retrieval of objects. If two objects have the same hash code, they can be stored in 
+the same "bucket" of the hash table.
+. Object equality: The hashCode() method is also used in conjunction with the equals() method to determine if two objects are equal. If two objects are equal according to the equals() 
+method, then their hash codes should also be equal.
+
+**It's important to note that while two objects that are equal must have the same hash code, the reverse is not necessarily true. Two objects with the same hash code may or 
+may not be equal. This is known as a hash code collision,
+
+32. " " and null both are same or not for any String in java?
+In Java, null and an empty string "" are not the same thing. An empty string is a string with zero characters, while null is a special value that indicates the absence of a value.
+If a String variable is assigned the value null, it means that the variable does not reference any object and has no value. On the other hand, if a String variable is assigned the 
+value "", it is an empty string with zero characters and still represents a valid object.
+Example:
+String str=" ";
+	String st= null;
+	System.out.println(str==st);
+        System.out.println(str.equals(st));
+ Output: false  false
+
+33. what is predicate in java8?
+
+In Java 8, a Predicate is a functional interface that represents a function that takes in an input and returns a boolean value. It is part of the Java 8 functional programming features and 
+is located in the java.util.function package. The Predicate interface has a single abstract method called test(), which takes an input parameter of a certain type and returns a boolean 
+value. The test() method is used to test a condition, and the result of the test is either true or false.
+Example:
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
+public class PredicateExample {
+
+   public static void main(String[] args) {
+      List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+      // using a Predicate to filter even numbers
+      Predicate<Integer> evenNumber = n -> n % 2 == 0;
+
+      numbers.stream()
+             .filter(evenNumber)
+             .forEach(System.out::println);
+   }
+}
+
+34.what is consumer in java8?
+
+In Java 8, a Consumer is a functional interface that represents a function that takes in an input and performs some operation on it, but does not return any value. It is part of the 
+Java 8 functional programming features and is located in the java.util.function package. The Consumer interface has a single abstract method called accept(), which takes an input 
+parameter of a certain type and returns no value. The accept() method is used to perform an operation on the input.
+Example:
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class ConsumerExample {
+
+   public static void main(String[] args) {
+      List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "Dave");
+
+      // using a Consumer to print each name
+      Consumer<String> printName = name -> System.out.println(name);
+
+      names.forEach(printName);
+   }
+}
+
+35. what is function in java8?
+
+In Java 8, a Function is a functional interface that represents a function that takes in an input of one type and produces an output of another type. It is part of the Java 8 
+functional programming features and is located in the java.util.function package. The Function interface has a single abstract method called apply(), which takes an input parameter of
+a certain type and returns an output of another type. The apply() method is used to apply a transformation to the input and produce an output.
+Example:
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
+
+public class FunctionExample {
+
+   public static void main(String[] args) {
+      List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+      // using a Function to transform each number
+      Function<Integer, Integer> addOne = n -> n + 1;
+
+      numbers.stream()
+             .map(addOne)
+             .forEach(System.out::println);
+   }
+}
+
+36. Difference between a static and a non-static inner class?
+. Access to the outer class: A non-static inner class can access the members (fields and methods) of the outer class, including private members, as if they were its own members. A static 
+inner class does not have access to the members of the outer class.
+. Creation of instances: To create an instance of a non-static inner class, you first need to create an instance of the outer class, and then use that instance to create the inner class object.
+On the other hand, you can create an instance of a static inner class directly using the class name, without needing an instance of the outer class.
+. Non-static inner classes have an implicit reference to the outer class, which means that each instance of a non-static inner class is associated with an instance of the outer class.
+This can consume more memory than a static inner class, which does not have such an association.
+
+public class OuterClass {
+    private static int staticVar = 10;
+    private int instanceVar = 20;
+
+    // Static inner class
+    public static class StaticInnerClass {
+        public void display() {
+            System.out.println("Static var: " + staticVar);
+        }
+    }
+
+    // Non-static inner class
+    public class InnerClass {
+        public void display() {
+            System.out.println("Instance var: " + instanceVar);
+            System.out.println("Static var: " + staticVar);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Creating an instance of static inner class
+        OuterClass.StaticInnerClass staticInner = new OuterClass.StaticInnerClass();
+        staticInner.display(); // Output: Static var: 10
+
+        // Creating an instance of non-static inner class
+        OuterClass outer = new OuterClass();
+        OuterClass.InnerClass inner = outer.new InnerClass();
+        inner.display(); // Output: Instance var: 20 Static var: 10
+    }
+}
+
+37. What is object cloning in java?
+Object cloning in Java is the process of creating a duplicate copy of an existing object. In Java, object cloning is supported by the Cloneable interface and the clone() method.
+When a class implements the Cloneable interface, it indicates that its objects can be cloned.
+The clone() method creates a new object of the same class as the original object and copies the values of all the fields from the original object to the new object. 
+The clone() method returns an object of type Object, so it needs to be cast to the appropriate type before it can be used. 
+There are two types of object cloning in Java: shallow cloning and deep cloning.
+. Shallow cloning: Shallow cloning creates a new object with the same field values as the original object, but the references to the objects referred to by the original object's fields
+ are copied, rather than the objects themselves. This means that changes made to the objects referred to by the original object's fields will be reflected in the cloned object's fields
+ as well.
+. Deep cloning: Deep cloning creates a new object with the same field values as the original object, but also creates new objects for the objects referred to by the original object's
+fields. This means that changes made to the objects referred to by the original object's fields will not be reflected in the cloned object's fields.
+Example:
+public class MyClass implements Cloneable {
+    private int x;
+    private String name;
+    
+    public MyClass(int x, String name) {
+        this.x = x;
+        this.name = name;
+    }
+    
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+// create an object of MyClass
+MyClass obj1 = new MyClass(10, "John");
+
+// clone the object
+MyClass obj2 = (MyClass) obj1.clone();
+
+// print the values of the original and cloned objects
+System.out.println("Original object: " + obj1.x + " " + obj1.name);
+System.out.println("Cloned object: " + obj2.x + " " + obj2.name);
+In this example, obj1 is an object of MyClass. The clone() method is called on obj1 to create a clone of the object, which is assigned to obj2. The values of the fields of both objects 
+are then printed to the console.
+
+38. Can an Interface implement another Interface?
+No, You can't implement an interface from another interface but you can extend an interface from another interface.
+
+39. can we exetend more than one class?
+No, in Java, a class can only directly extend one other class, meaning that it cannot extend multiple classes at the same time. This is because Java follows single inheritance,
+which means that a class can have only one direct superclass. However, Java does provide a way to achieve some of the benefits of multiple inheritance through the use of interfaces.
+A class can implement multiple interfaces, each of which can define a set of methods that the implementing class must implement.
+Example:
+public class MyClass implements InterfaceA, InterfaceB {
+    public void methodA() {
+        // implementation for methodA     
+    }
+    
+    public void methodB() {
+        // implementation for methodB
+    }
+    
+    // other methods and fields
+}
+
+40. Can a class be defined inside an Interface in java?
+Yes, it is possible to define a class inside an interface in Java. This is known as a nested class or an inner class. There are four types of nested classes in Java: static nested classes, 
+non-static nested classes (also known as inner classes), local classes, and anonymous classes.
+Example:
+public interface MyInterface {
+    void myMethod();
+    
+    class MyClass {
+        private int x;
+        
+        public MyClass(int x) {
+            this.x = x;
+        }
+        
+        public void printX() {
+            System.out.println(x);
+        }
+    }
+}
+
+41. Can an Interface be defined inside a class?
+Yes, it is possible to define an interface inside a class in Java. This is known as a nested interface. Similar to nested classes, there are four types of nested interfaces in Java: 
+static nested interfaces, non-static nested interfaces, local interfaces, and anonymous interfaces. 
+Static nested interfaces are defined as static members of a class, while non-static nested interfaces are defined without the static keyword. Local interfaces are declared inside a 
+method, while anonymous interfaces are declared and instantiated in the same statement.
+Example:
+public class MyClass {
+    private int x;
+    
+    public void myMethod() {
+        MyInterface myInterface = new MyInterface() {
+            public void interfaceMethod() {
+                System.out.println("Hello from interface method");
+            }
+        };
+        
+        myInterface.interfaceMethod();
+    }
+    
+    public interface MyInterface {
+        void interfaceMethod();
+    }
+}
+
+42. When does the compiler supply a default constructor for a class?
+ n
+In Java, a default constructor is a constructor that takes no arguments and is provided by the compiler if no constructor is explicitly defined in the class. The compiler supplies a 
+default constructor for a class in the following cases:
+. If no constructor is explicitly defined: If a class does not have any constructors defined explicitly, the compiler automatically provides a default constructor for the class.
+. If all constructors are defined with arguments: If a class has one or more constructors defined explicitly, but all of them take one or more arguments, the compiler still provides
+a default constructor for the class. This default constructor takes no arguments and simply calls the superclass constructor using the super() keyword.
+
+43. What is the difference between == and quals() in comparing Java String objects?
+Both equals() method and the == operator are used to compare two objects in Java. == is an operator and equals() is method. But == operator compares reference or memory location of 
+objects in a heap, whether they point to the same location or not. Whenever we create an object using the operator new, it will create a new memory location for that object. So we use 
+the == operator to check memory location or address of two objects are the same or not.
+**EQUALS() check the value of two object this means that it checks if the two objects have the same characters in the same order.
+where as equals() method checks the memory location as well as hashcode. In hasCode() it is defined that if the hashCode of two objects are same then we can conlude the objects are same
+but if the hashCode of two objects are not same then we can not conlude the objects are same.
+Example:
+String s1 = "hello";
+String s2 = "hello";
+String s3 = new String("hello");
+
+System.out.println(s1 == s2);      // true
+System.out.println(s1 == s3);      // false
+System.out.println(s1.equals(s2)); // true
+System.out.println(s1.equals(s3)); // true
+
+44. Can we create abstract classes without any abstract methods?
+
+Yes, we can create abstract classes without any abstract methods in Java. An abstract class is a class that cannot be instantiated, and it may or may not have abstract methods. An abstract
+method is a method that does not have an implementation in the abstract class and must be implemented by a concrete subclass.
+public abstract class Shape {
+    protected int x;
+    protected int y;
+
+    public Shape(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void move(int deltaX, int deltaY) {
+        x += deltaX;
+        y += deltaY;
+    }
+}
+
+45. What is the difference between super() and this()?
+super() is used to call super class constructor , whereas this() used to call constructors in the same class. this() and super() can be used as both method and variable as well.
+
+Questions for Exceptions in java:
+
+46. what is exception propagation in java?
+In Java, exception propagation refers to the process of passing an exception from one method to another in the call stack until it is caught and handled. When an exception is thrown in
+a method, it is first caught by the nearest try-catch block in that method. If the exception is not caught in that method, it is propagated to the calling method, and the same process
+is repeated until the exception is caught or the program terminates.
+**Exception propagation in Java refers to the process by which an exception is passed from one method to another within a program until it is handled 
+Example: 
+public class ExceptionPropagationExample {
+    public static void main(String[] args) {
+        try {
+            method1();
+        } catch (Exception e) {
+            System.out.println("Exception caught in main method: " + e.getMessage());
+        }
+    }
+
+    public static void method1() throws Exception {
+        System.out.println("Method 1 called");
+        method2();
+        System.out.println("Method 1 completed");
+    }
+
+    public static void method2() throws Exception {
+        System.out.println("Method 2 called");
+        method3();
+        System.out.println("Method 2 completed");
+    }
+
+    public static void method3() throws Exception {
+        System.out.println("Method 3 called");
+        throw new Exception("Exception in method 3");
+    }
+}
+
+47. What's the base class of all exception classes in java?
+The base class of all exception classes in Java is the java.lang.Throwable class. This class is the root of the exception hierarchy and serves as the superclass of both Exception and 
+Error classes. All exceptions and errors are subclasses of Throwable, and they inherit its methods, such as getMessage(), getCause(), and printStackTrace(). When an exception or error
+occurs, an object of a subclass of Throwable is created and thrown, and it can be caught and handled using try-catch blocks.
+Example:
+try {
+    // some code that may throw an exception or error
+} catch (Throwable t) {
+    // handle the exception or error
+}
+
+48. Which are the two subclasses under Exception class? ans that the compiler does not require the code to either handle them or declare them
+in the method signature. Examples of unchecked exceptions include NullPointerException, ArrayIndexOutOfBoundsException, and IllegalArgumentException.
+
+50. When ArithmeticException is thrown?
+ArithmeticException is thrown when an exceptional arithmetic condition has occurred. For example, an integer "divide by zero" throws an instance of this class.
+
+51. What is the difference between error and an exception?
+Exceptions are those which can be handled at the run time whereas errors cannot be handled. Recovering from Error is not possible. The only solution to errors is to terminate the execution.
+Where as you can recover from Exception by using either try-catch blocks or throwing exception back to caller.
+
+52. Why we can not handel error in java program in java?
+errors in Java are not meant to be handled by the application be
+cause they are fatal and indicate serious system problems,that are not recoverable, such as virtual machine crashes, out of 
+memory errors, or other low-level system errors, while exceptions are meant to be caught and handled by the application in order to recover from errors and continue program execution.
+
+53. Can finally block be used without catch?
+Yes, it is possible to have try block without catch block by using finally block. That means, try block can be followed by either catch block or finally block . The catch block is optional.
+You must have a try block with a finally block.
+
+54. Which types of exceptions are caught at compile time?
+Checked exceptions are checked at compile-time.
+
+55. What happens if an exception is not handled in a program?
+If an exception is not handled in a program, it will propagate up the call stack until it reaches an exception handler or until it causes the program to terminate. When an exception is
+not handled, the program's normal execution is interrupted, and control is transferred to the runtime system to handle the exception. 
+Therefore, it is important to handle exceptions in a program using appropriate exception handling mechanisms, such as try-catch blocks.
+
+56. What is the difference between throw, throws and Throwable?
+throw: throw is a keyword in Java that is used to throw an exception explicitly from a method or block of code. When an exception is thrown using the throw keyword, the control is
+immediately transferred to the nearest catch block that can handle the exception.
+Example:
+public int calculateSquareRoot(int value) {
+    if (value < 0) {
+        throw new IllegalArgumentException("Input value cannot be negative");
+    }
+    return Math.sqrt(value);
+}
+
+throws: throws is a keyword in Java that is used in a method signature to indicate that the method may throw one or more exceptions. When a method declares that it can throw an exception 
+using the throws keyword, it is the responsibility of the caller to handle the exception or to declare that it can also throw the same exception.
+Example:
+public int calculateSquareRoot(int value) throws IllegalArgumentException {
+    if (value < 0) {
+        throw new IllegalArgumentException("Input value cannot be negative");
+    }
+    return Math.sqrt(value);
+}
+
+Throwable: Throwable is a class in Java that is the superclass of all exceptions and errors in Java. All exceptions and errors are objects of classes that extend the Throwable class, 
+including RuntimeException, IOException, NullPointerException, and others.
+Exammple:
+public void processInput(String input) {
+    if (input == null || input.isEmpty()) {
+        throw new IllegalArgumentException("Input cannot be null or empty");
+    }
+    // process the input
+}
+57. Does system.exit() in try block executes finally block?
+
+System.exit() exits the program immediately and it will not execute finally block . system.exit() will be the last executed statement, only statements preceding these system.exit()
+statements are executed.
+
+58. What causes a java.lang.ArrayIndexOutOfBoundsException and how do I prevent it?
+In Java, a java.lang.ArrayIndexOutOfBoundsException is thrown when an attempt is made to access an array element with an index that is outside the range of valid indices for the array. 
+To avoid the ArrayIndexOutOfBoundsException use an index within specified index range. And always check whether your index is > = array.length.
+Example:
+int[] arr = {1, 2, 3, 4, 5};
+int index = 5;
+
+if (index >= 0 && index < arr.length) {
+    int element = arr[index];
+    // do something with the element
+} else {
+    // handle the case where the index is out of bounds
+}
+
+59. Incase, there is a return at the end of try block, will execute finally block?
+Yes, if there is a return statement at the end of a try block, the finally block will still be executed before the return statement is executed and the method returns.
+The finally block is executed regardless of whether an exception is thrown or caught within the try block, or whether a return statement is encountered. The only case where the finally 
+block may not be executed is if the JVM exits abnormally, for example, due to a system crash or a call to System.exit().
+Example:
+public int divide(int a, int b) {
+    try {
+        return a / b;
+    } catch (ArithmeticException e) {
+        // handle the exception
+    } finally {
+        System.out.println("Finally block executed");
+    }
+}
+
+60. What is NullPointerException in Java?
+In Java, a NullPointerException is a type of runtime exception that occurs when a program attempts to use a null reference, which does not reference an object. This can happen when you 
+try to call a method or access a field on a null reference, or when you try to use a null reference as an argument to a method that does not accept null values.
+Example:
+String str = null;
+int length = str.length(); // this line will throw a NullPointerException
+To avoid the nullPointerException we can use:
+Use the Optional class to wrap object references that may be null and handle null cases explicitly.
+Use the Objects.requireNonNull() method to ensure that an object reference is not null before using it.
+Example:
+public void printLength(String str) {
+    Objects.requireNonNull(str, "String cannot be null");
+    int length = str.length();
+    System.out.println("Length of the string is " + length);
+}
+61.String:
+String is a char of seq.its not a primitive data type.Strings are immutable in Java, which means that they cannot be changed once they are created. This means that 
+if you want to change a string, you need to create a new string.
+String str1 = "Hello, world!";
+st1 stored in string poll( The String pool is a special memory area in the Java heap where all string literals are stored.it can help to improve performance and memory usage)
+If the new operator is used to create a string, it gets created in the heap memory.
+	
+String Buffer is thread safe ,synchronised,since java 1.0,it is slower than string builder.append(), insert(), delete(), and substring() methods for String manipulation.
+ String builder is not thread safe,since java 1.5,as it is thread safe so its faster than string buffer In most of the scenarios, we don’t use String in a multithreaded 
+environment. So Java 1.5 introduced a new class StringBuilder, 
+62.What is wrapper class?
+ wrapper class wraps a primitive data type in an object.  For example, the wrapper class for the int primitive data type, Integer, provides methods for converting int values to 
+strings and vice versa.One reason is that wrapper classes allow primitive data types to be used in collections. Collections are a way of storing and manipulating groups of objects.
+ Primitive data types cannot be stored in collections directly, but they can be wrapped in wrapper objects and then stored in collections.
+63.what  is type casting?
+Type casting is the process of converting a value from one data type to another. In Java, type casting can be done implicitly or explicitly.
+ Widening Casting (automatically) - converting a smaller type to a larger type size
+byte -> short -> char -> int -> long -> float -> double
+
+Narrowing Casting (manually) - converting a larger type to a smaller size type
+double -> float -> long -> int -> char -> short -> byte
+64.what is the benifit of polymorphism ?if we dont use in our code than what happend?
+	:polymorphism is a powerful feature that can make our Java code more flexible, efficient, maintainable, and extensible. 
+	If we don't use polymorphism, our code will be less powerful and less capable of handling complex problems.
+ Suppose we have a class called Animal and two subclasses of Animal, Dog and Cat. We can write a method called speak() that takes an Animal object as a parameter.
+ The speak() method can then call the speak() method of the specific subclass of Animal that is passed in. This allows us to write a single method that can be used
+ to print out the sound that any type of animal makes.
+Without polymorphism, we would have to write two separate methods, one for Dog and one for Cat. This would make our code more rigid and less reusable.
+
+65.what is web service ?how its works?
+
+A 	
+66.How hasmap works internally?
+Hashmap is basically store the key-value pair .It internally call the hashtable which is array of bucket and the bucket is linkedlist .so whenever we store list of key-value pair in hash code
+based on key its hashed and which is help to indexing in bucket in that respective bucket its store the key value and next node . if is there any key which hashcoed is present then 
+that pair is strore just next to the privious pair  into the bucket.In that way hashmap is working.
+
+67.How Linkedln List works?
+68.what is String pull?
+69.can we write more than one finally()?
+	:No, in Java, you cannot write more than one finally block for a single try block. The finally block is used to define a code section that will be executed regardless
+         of whether an exception is thrown or not, and it is meant to ensure that some cleanup or finalization logic is performed.Allowing multiple finally blocks would violate
+         the single finally guarantee and could lead to confusing and error-prone code.
+
+70.how can we make custom exception?
+
+71.what is default method?can we override default method in interface?
+A default method is a method that has a body defined in the interface. It is a new feature of Java 8 and allows you to add new methods to interfaces without breaking existing code. 
+Default methods are denoted with the default keyword.
+You can override a default method in an interface by declaring a method with the same name and signature in the implementing class. If you do not override a default method, 
+the default implementation will be used.
+**We can not write defult method in class.
+
+72.what is exception propagation
+Java, exception propagation is the process of transferring an exception from the point where it is thrown to the point where it is handled. When an exception is thrown,
+ the control is transferred to the nearest enclosing try-catch block that matches the type of exception thrown. If no such match is
+ found, the exception is propagated to the calling method. This process continues until the exception is either handled or it reaches the top of the call stack and the program terminates.
+73.Diffrent between stack and queue?
+
+74.what is the different between enhance for loop and normal for loop?
+
+enhanced (foreach) loops are useful for simple iteration over collections or array without the need for index tracking.
+normal (traditional) for loops provide more czxc ontrol and are necessary when you need to work with indices or perform more complex loop behaviors.
+	:
+75.why introduce interface?
+
+to achive multiple inheritance.
+
+76Different between eggar loading and lazy loading?
+78.what does wait method?
+	:whenever multiple thread working simustaniously on a same object at this situation if we will call the wait() method then one or more than one thread is waiting untill the running 
+         thread completed its task.
+79.Notify():whenever the multuple thread working on the same object and more thread 
+
+80.volatile :
+Volatile is a keyword which is used with the variable in java.If we define a variable as a volatile then the value might be chnage accroding to multiple thread . so  new thread alwys get 
+most upto date value.
+81.If i have a class and there one static method present.Is it possible that i have to called that static method by creating object of that class?
+yes.
+package com.example;
+class A{
+	static void method()
+	{
+		System.out.println("static called");
+	}
+	void ab() {
+		System.out.println("Non static called");
+	}
+	
+}
+
+//for static method we dont have to create obj to calld any static method but for non static method
+//but for non static method to called in static method we have to create object 
+
+public class StaticEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		A a=null;
+		A a1= new A();
+		a1.method();
+		a1.ab();
+//		A.method();
+//		String s = null;
+//		s.length();
+//		
+
+	}
+
+}
+
+82.JNI and JIT in java?
+	:JNI is a programming framework that allows Java code running in the Java Virtual Machine (JVM) to interact with native code written in languages like C, C++, or assembly. 
+	:jit :It is a compiler that compiles Java bytecode into native machine code at runtime. This can improve the performance of Java programs
+
+83.What is String?IS String Thread safe?Diff between String , string builder and string buffer?
+  :String is a Sequence of charecter that is present in string pool area if we define a String without adding new keyword.
+
+84.22. whta is bom file and pom file?
+  A POM file, or Project Object Model file, is a file that contains the information about a Maven project. It includes the project's dependencies, plugins, and other configuration details
+    i.e the project description, project name, group id, artifact id etc.
+ A BOM file, or Bill of Materials file, is a special type of POM file that is used to manage the versions of a project's dependencies. It provides a central place to define and update the
+ versions of all the dependencies that a project needs. This can help to avoid version conflicts and ensure that all the dependencies work together correctly. The POM file is the central 
+ point of control for a Maven project.
+
+85.Difference between application.properties and .yml file?
+
+ I.Format: application.properties uses a simple key-value format, while .yml files use a more structured format Like JSON.
+we used yml file when you need various profile like dev prod etc in your application. application.properties file used for set the basic details like databse port no,themlaeaf ,any 3rd party
+key.
+
+86.Different between Hibernet ,orm and jpa?
+
+*ORM is a general concept and approach used in software development that create a bridge between object-oriented programming languages (like Java) and relational databases.
+its providing a layer of abstraction that hides the underlying database details from the Java code.
+*JPA is a Java specification for ORM that defines a set of interfaces and annotations for standardizing how Java objects are mapped to relational databases.
+*Hibernate is an ORM framework for Java applications. It provides a set of libraries and tools to map Java objects to relational database tables and vice versa.
+Hibernate is an implementation of the JPA specification.It offers a wide range of features, including automatic table creation, lazy loading, caching, and query language (HQL - Hibernate Query Language).
+
+
+**Configuration: Specifies database connection details and other settings.
+Session Factory: Creates and manages sessions.
+Session: Represents a single unit of work with database operations.It is used to perform database operations like saving, updating, deleting, and querying data. Sessions are 
+         created and managed by the Session Factor
+Entity Classes: Java classes that are mapped to database tables.
+Mapping Files/Annotations: Define the mapping between entity classes and database tables.
+HQL (Hibernate Query Language): A query language for querying Java objects, similar to SQL.
+
+87.How you define bean scope in your application?
+  <bean id="mySingletonBean" class="com.example.MySingletonBean" />
+@Component
+@Scope("prototype")
+public class MyPrototypeBean {
+    // ...
+}
+
+
+88.What is thread local?
+
+ThreadLocal in Java is a thread-safe mechanism that allows you to associate a value with each thread. This value is called a thread-local variable. Each thread has its own copy of the 
+thread-local variable, and changes made to the variable by one thread do not affect the variable in other threads.
+They can be used to store data that needs to be isolated from other threads.
+They can be used to improve performance by avoiding the need for synchronization.
+
+
+89.What is reflection api?
+The Reflection API is a set of classes and interfaces in the Java programming language that allow you to examine and modify the runtime behavior of classes, objects, and methods
+
+90.OutOfMemoryError ?
+OutOfMemoryError is a runtime error in Java which occurs when the Java Virtual Machine (JVM) is unable to allocate an object due to insufficient space in the Java heap
+
+91.I have a list of data fast you have to fetch data in unorderd manner and 2nd you have to manupulate the data for this which one suitable for arraylist and which one is for linkedlist?
+
+  Fetching Data: ArrayList is more suitable for scenarios where you need to fetch data quickly by index. It provides constant-time O(1) access time for retrieving elements by their index. 
+                 If you frequently need to access elements randomly or in an unordered manner, ArrayList is a better choice.
+  Manipulating Data: LinkedList is more efficient than ArrayList when it comes to inserting or removing elements in the middle of the list. These operations are O(1) because you only need
+                      to update the references to neighboring nodes. However, adding/removing elements at the beginning or end is less efficient (O(1)) because you still need to
+                    traverse the list to find the corresponding nodes.
+
+1.String class is Final :string class is final so that we can not extend that class in the subclass.and we can not override
+2.String is immutable : String is immutable beacuse we can not change the state or value once it is created.
+
+String is inherently thread safe .Basically the class is final .
+
+**Difference:
+1.String is immutable where String buffer and String builder is mutable
+2.String not use in threded enviroment ,String Buffer is used in multithreded enviroment and String builder used in single threded enviroment
+3.String is normally strore in string pool ,where string builder and string buffer strore in heap
+4.String is slow ,String builder is fast rather than string builder.
+
+
+String is immutable, if you try to alter their values, another object gets created, whereas StringBuffer is mutable so they can change 
+their values. Thats why StringBuffer is faster than String.
+
+**Advantage of immutable class?
+ I.Thread Safety : Immutable objects are inherently thread-safe because they cannot be modified after they are created.That means there is no worries about multiple thread access the 
+                  immutable object
+ II.Security : Since immutable objects cannot be changed,So This is especially important when dealing with sensitive information.
+ III.Ease of caching: Immutable objects can be easily cached, because they will never change. This can improve performance, especially in applications where the same objects are 
+                      accessed frequently.
+
+**why String buffer is introduce?
+String buffers are introduced in Java to provide a mutable string object. Strings in Java are immutable, which means that once a string is created, it cannot be modified. 
+This can be a problem if you need to modify a string frequently, as it will require creating a new string object each time.
+
+StringBuffer objects are mutable, which means that they can be modified after they are created. This makes them more efficient for operations such as concatenation, insertion,
+ and deletion. StringBuffers are also thread-safe, which means that they can be safely accessed by multiple threads at the same time.
+
+**for each loop:The for-each loop, also known as the enhanced for loop, is a way to iterate over a collection in Java.
+      for (dataType item : collection) {
+  // code to execute for each item in the collection
+}
+   
+
+-----------------------------------------Interview question-----------------------------------------
+
+where we have to use interface and where we have to use abstract class?
+where we have to use ArrayList and where we have to use the LinkedList?
+How arrayList and LinkedList works means how arrayList and LinkedList store data?
+If inside one null pointer exception is occur and inside catch block if we define System.exit() and if we define S.O.P in finally block then S.O.P will execute or not?
+How IOC will works?
+HashSet Vs LinkedHashSet
+What is IOC? How IOC works. Means What actually IOC does?
+If Multiple class extends one Interface and we Autowired the Interface in Controller class then how spring know what implementation class have to inject in Controller class?
+Ans. We have to use @Qualifier annotation over that class.
+What is String?
+Whatis the architecture of the project? describe it.
+What is the meanig of @RequestBody and @Valid?
+what is Singletone & Prototype?
+what is spring initilizer?
+@Requestparam?
+How you write to print instant date?
+@sequencegenerator?
+Mongobd Qary?
+sql update delete and trunk a table?
+primary key and unique key ?
+
+
+
+
+   

@@ -1,0 +1,129 @@
+#Stream interview question:
+
+1. What is Java Stream? How does it differ from collections?
+	: The Stream API is used to process group of objects. A stream is a sequence of objects that supports various methods.Stream does not store elements.
+        It simply convertss elements from a source such as a data structure, an array, or an I/O channel, through a pipeline of computational operations.
+	 **Collections are used to store and manage data, while streams are used to process data.
+	**Collection contain the element the element but stream just process the data not contain eny element
+2. What are the benefits of using streams in Java?
+	:By using stream api the code is more efficient and we can resued the code.Streams can be used to filter large datasets, which can significantly
+	 improve the performance of your code.
+3. What are the core stream operations in Java 8?
+	   There are two types of operations in stream. 
+    1. Terminal Operation: These operations are used to produce results. They can’t be used for chaining the other methods.
+        Example: sorted(Comparator<T>), count(),min(),max(),foreach(),toArray(),collect(),reduce() etc.
+    2. Intermidiate Operation: These operations are used to pipeline other methods and Modifies the stream in some way and returns a new stream.. They don’t produce results because these operation does not
+       invoke until the terminal operation gets executed.
+        Example: filter(),sorted(),distinct(),peek()map()etc.
+**In stream only one terminal opration is there but mor than one intermediate opration can be there.
+**A Stream in Java is designed to be processed in a lazy and sequential manner, meaning that once a terminal operation is invoked on a Stream
+4. Is the stream lazy and eager ?
+   	: Yes, Stream is lazy because intermediate operations are not invoked unless terminal operation is executed. Each intermediate operation creates a new stream, stores the provided 
+   	 operation/function and return the new stream. The pipeline accumulates these newly created streams.
+
+5. What is the difference between intermediate and terminal operations in Java streams?
+6. Explain the difference between a sequential and parallel stream.
+	:sequential stream() means this stream is process one by one .That means each element in this stream is processed by single thread.
+	:parallal stream() : Parallel streams are processed in parallel, which means that multiple elements in the stream can be processed by multiple threads at the same time.
+				if you print the list of object in case of parallel stream that order may not be smane..
+7. What is the purpose of the `filter` operation in streams? Provide an example.
+	:FILTER method used to filter the stream and it takes predicate as a argument and it return a boolean value .
+8. How does the `map` operation work in streams? Give an example.
+	:map operation in streams works by applying a function to each element in the stream and returning a new stream with the results of the function. The map operation in 
+	Java streams is an intermediate operation 
+9. What is the significance of the `reduce` operation in streams?
+	: you could use the reduce() operation to calculate the sum, product, or maximum of a stream of numbers.It take 2 element and return optional
+10. Explain the difference between `findFirst` and `findAny` methods in streams.
+12. What is the purpose of the `collect` operation in streams? Give an example.	
+	:The collect operation in streams is used to collect the elements of a stream into a collection. The collect operation takes a collector as an argument.
+	 A collector is an object that defines how the elements of the stream should be collected.
+13. What are the common use cases for using `flatMap` in streams?
+14. How can you sort elements in a stream?
+15. What is the purpose of the `distinct` operation in streams? Provide an example.
+16. Explain the concept of lazy evaluation in Java streams.
+17. How can you limit the number of elements in a stream?
+18. What is the purpose of the `skip` operation in streams?S
+20. How do you create a custom collector in Java?
+2. How do you convert a stream to an array in Java?
+	:using the toArray() method: The toArray() method returns an array containing the elements of the stream. The type of the array is the same as the type of the
+	 elements in the stream. For example, if the stream contains String elements, then the toArray() method will return a String array.
+	Stream<String> stream = Stream.of("John", "Jane", "Mary");
+	String[] array = stream.toArray(String[]::new);
+	Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
+int[] array = stream.mapToInt(i -> i).toArray();
+4. What is the purpose of the `peek` operation in streams? Provide an example.
+	:peek()is a intermidiate operation that takes a function as an argument and applies it to each element in the stream and give a new stream.The peek() method can be used for a variety 
+	of purposes, such as debugging, logging, or measuring the performance of a stream. 
+5. How do you perform grouping operations on a stream using the `groupingBy` collector?
+	:take (k,v) and its takes a argument from stream an dreturn a key
+6. What is the purpose of the `joining` collector in streams? Give an example.
+7. How can you perform parallel processing using streams?
+8. Explain the concept of method references in the context of stream operations.
+9. What are the advantages of using method references in streams?
+10. How do you handle null values in streams?
+	:FILTER,optional class,
+11. What is the purpose of the `min` and `max` methods in streams? Provide an example.
+12. Explain the difference between the `anyMatch`, `allMatch`, and `noneMatch` methods in streams.
+13. How do you perform mapping operations on streams using the `collect` method?
+14. What is the purpose of the `toSet` and `toList` collectors in streams?
+	:This collector collects the elements of the stream into a list.
+	This collector collects the elements of the stream into a set.
+15. How do you handle infinite streams in Java?
+16. Explain the concept of parallel sorting in streams using the `sorted` method.
+18. How do you handle concurrent modification exceptions in streams?
+20. How do you chain multiple stream operations together?
+21.waht is iteraor()?
+	: An iterator is an object that allows you to iterate through a collection one by one.
+22.what is iterable?
+	:The Iterable interface in Java provides the functionality of accessing elements of a collection one by one. This interface is implemented by all collection
+	 classes in the Java Collections Framework, such as List, Set, and Map.
+23.Why does not the Map interface extend the Collection Interface or vice-versa?
+	
+	:The Map interface does not extend the Collection interface because they are fundamentally different data structures.
+	 A Collection is a group of objects that are stored in a structured manner and have a specified access mechanism. A Map, on the other hand, 
+	is a collection of key-value pairs. The keys in a Map must be unique, and the values can be any object.
+24.Why does HashMap allow null whereas HashTable does not allow null?
+	:The objects used as keys must implement the hashCode and equals methods in order to successfully save and retrieve objects from a HashTable. These methods cannot be implemented 
+     by null because it is not an object. HashMap is a more advanced and improved variant of Hashtable.HashMap was invented after HashTable to overcome the shortcomings of HashTable.
+25.What is failsafe and FailFast?
+	:Fail-fast iterators throw a ConcurrentModificationException if the collection is modified means that if you add, 
+	remove, or replace any elements in the collection while the iterator is iterating over it, the iterator will throw an exception.
+	import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Example {
+
+    public static void main(String[] args) {
+        ArrayList<String> names = new ArrayList<>();
+        names.add("John");
+        names.add("Mary");
+        names.add("Peter");
+
+        Iterator<String> iterator = names.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+            names.add("Jane"); // This will throw a ConcurrentModificationException
+        }
+    }
+}
+Fail-safe iterators do not throw a ConcurrentModificationException if the collection is modified means that you can safely 
+modify the collection while the iterator is iterating over it, but there is no guarantee that the iterator will be able to access all of the elements in the collection.
+	public class Example {
+
+    public static void main(String[] args) {
+        CopyOnWriteArrayList<String> names = new CopyOnWriteArrayList<>();
+        names.add("John");
+        names.add("Mary");
+        names.add("Peter");
+
+        Iterator<String> iterator = names.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+            names.add("Jane"); // This will not throw a ConcurrentModificationException
+        }
+    }
+}
+26.what is priority queue?
+	:
+	A priority queue is a data structure that stores elements in a sorted order based on their priority.
+	 Elements with higher priority are served before elements with lower priority.

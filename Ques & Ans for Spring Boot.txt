@@ -1,0 +1,330 @@
+                                                                                                                                                                                                                                        * Basic Spring Boot Questions *
+1. What is Spring boot?
+   Spring boot is a java-based Spring framework that is used for application development that means to build stand-alone and web-based applications. It has extra features of auto configuration
+ and embedded application server like tomcat, jetty etc.
+
+2. What are the Features of Spring Boot that makes it different?
+   . Spring Boot is nothing but an existing framework with the addition of an embedded HTTP server and annotation configuration which makes it easier to 
+     understand and faster the process of development.
+   . It creates a stand-alone spring appliocation with minimal configuration needed.
+   . It has embedded application server like tomcat, jetty which makes it just code and run the application.
+   . It does not require any XML configuration only a few annotations are required to do the configuration of it.
+   . Increases productivity and reduces development time.
+   .Spring Boot includes an embedded server (Tomcat, Jetty, or Undertow), allowing you to run your application as a standalone JAR file without needing to deploy it to an 
+   external application server.
+
+3. What are the Spring Boot key component?
+   . Spring Boot auto-configuration:  Spring Boot AutoConfiguration is a powerful feature that automatically configures your application based
+                                  on the dependencies you include. This means that you don't need to write a lot of configuration code yourself, which can save you a lot of time and effort.
+     the main application class with the @SpringBootApplication annotation, which itself is a combination of @Configuration, @EnableAutoConfiguration, and @ComponentScan.
+
+  . Spring Boot Starters: Starters are pre-configured templates for commonly used dependencies and libraries, such as Spring Web, Spring Data JPA, and Spring Security. 
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+   . Spring Boot CLI:Spring Boot CLI(Command Line Interface) is a Spring Boot software to run and test Spring Boot applications from command prompt. When we run Spring Boot applications using
+     CLI, then it internally uses Spring Boot Starter and Spring Boot AutoConfigurate components to resolve all dependencies and execute the application. 
+
+   . Spring Boot starter POMs.
+   . Embedded Web Server: Spring Boot includes embedded web servers like Tomcat, Jetty, and Undertow, which allow you to run your application as a standalone web server without the need for 
+                          external server deployment.
+   . Spring Boot actuator:Spring Boot Actuator is  that provides production-ready features for your Spring Boot application. It includes a number of endpoints that allow you to 
+     monitor and manage your application, such as monitoring, health checks, logging, and management tasks.
+     The Spring Boot Actuator is enabled by default when you add the spring-boot-starter-actuator dependency to your project.
+ 	
+   .Spring Boot Data: Spring Boot simplifies data access form your respective database using Spring Data JPA, Spring Data MongoDB, Spring Data JDBC, and other data-related modules.
+ 
+   .Spring Boot Security: It offers security features to secure your application, including authentication, authorization, and various security mechanisms.
+
+**Spring Initilizer:
+Spring Initializr is a creation tool that helps developers quickly and easily create new Spring Boot projects.It provides a simple web interface where developers can select the dependencies
+ they need for their project, and then generate a complete project skeleton with all the necessary configuration files and boilerplate code.
+
+ 4. What is Spring Boot Auto-configuration?
+    Spring Boot auto-configuration automatically configres the Spring application based on the jar dependencies that we have added.
+      We can enable the auto-configuration feature by using the annotation @EnableAutoConfiguration. But this annotation does not use because it is wrapped inside the
+      @SpringBootApplication annotation. The annotation @SpringBootApplication is the combination of three annotations: @ComponentScan, @EnableAutoConfiguration, and
+      @Configuration. Thats why, we use @SpringBootApplication annotation instead of using @EnableAutoConfiguration. 
+
+5. What is Spring Boot CLI (Command Line Interface)?
+   The Spring Boot CLI is a Command Line Interface for Spring Boot. It can be used for a quick start with Spring. By CLI developer does not need to write boiler plate code;
+   only needed to focus on business logic. Spring Boot CLI is the fastest way to create a Spring-based application.
+
+6. What is Spring Boot starter POMs?
+   Spring Boot Starter POMs are a set of convenient dependency descriptors that you can include in your application. 
+
+7. What is Spring Boot actuator?
+   An actuator is an additional feature of Spring that helps you to monitor and manage your application when you push it to production. These actuators include 
+   auditing, health, CPU usage, HTTP hits, and metric gathering, and many more that are automatically applied to your application.
+
+8. Why Spring Boot over Spring?
+   Starter POM.
+   depedecy Management.
+   Auto Configuration.
+   Component Scanning.
+   Embedded server.
+   InMemory DB.
+   Spring Boot actuator.
+
+9. What is the starter dependency of the Spring boot module?
+   Spring boot provides numbers of starter dependency, here are the most commonly used -
+   Data JPA starter, Test Starter, Security starter, Web starter, Mail starter, Thymeleaf starter.
+
+10. How does Spring Boot works?
+    Spring Boot automatically configures your application based on the dependencies you have added to the project by using annotation. The entry point of the spring boot application
+    is the class that contains @SpringBootApplication annotation and the main method. 
+    Spring Boot automatically scans all the components included in the project by using @ComponentScan annotation.
+
+11. What does the @SpringBootApplication annotation do internally?
+    The @SpringBootApplication annotation is the combination of three annotation thats are @Configuration, @EnableAutoConfiguration, and @ComponentScan that means SpringBootApplication 
+    is the equivalent of these three annotation with their default attributes. Spring Boot enables the developer to use a single annotation instead of using multiple. 
+    But, as we know, Spring provided loosely coupled features that we can use for each annotation as per our project needs.
+**I.@EnableAutoconfiguration: Auto-configuration automatically configures the Spring application based on the classpath dependencies and the environment  jar files in the classpath and 
+ the beans defined by us.
+.It enables Spring Boot to auto-configure the application context. Therefore, it automatically creates and registers beans based on both the included jar files in the classpath and the beans defined by us.
+
+II.@Configuration:The @Configuration annotation is a Spring annotation that is used to mark a class as a configuration class. Configuration classes are used to define beans and their dependencies in a 
+                  Spring application.  like we use @Baen,@component.
+****The main difference between these annotations is that @ComponentScan scans for Spring components while @EnableAutoConfiguration is used for auto-configuring beans present in the 
+    classpath in Spring Boot applications.
+
+**@configuration:Spring Boot will automatically scan and process @Configuration classes during application startup.
+                It will create and manage beans defined by the @Bean methods in these classes.
+                You can then inject these beans into other Spring components, such as controllers, services, or other beans, using @Autowired or constructor injection
+
+12. What is the purpose of using @ComponentScan in the class files?
+    SpringBootApplication scans all the beans and package declarations when the application initializes. You need to add the @ComponentScan annotation for your class file to
+    scan your components which you added to your project.
+
+13. How does a spring boot application get started?
+   Just like any other Java program, a Spring Boot application must have a main method. This main method works as an entry point of Spring Boot application, which invokes the 
+   SpringApplication#run method to bootstrap the application.
+   Example: 
+       @SpringBootApplication 
+       public class MyApplication { 
+   
+       public static void main(String[] args) {    
+    
+             SpringApplication.run(MyApplication.class);        
+               // other statements     
+           } 
+        }
+
+14. What are starter dependencies?
+    Spring boot starter is a maven template that contains a collection of all the relevant transitive dependencies that are needed to start a particular functionality.
+    Like we need to import spring-boot-starter-web dependency for creating a web application.
+    i.e:- 
+        <dependency>
+        <groupId> org.springframework.boot</groupId>
+        <artifactId> spring-boot-starter-web </artifactId> 
+        </dependency>
+
+15. What is Spring Initializer?
+   Spring Initializer is a web application that helps you to create an initial spring boot project structure which provides a maven or gradle file to build your code.
+
+16. What are the most common Spring Boot CLI commands?
+    -run, -test, -grap, -jar, -war, -install, -uninstall, --init, -shell, -help.
+
+
+                                                                    * Advanced Spring Boot Questions *
+
+1.  What Are the Basic Annotations that Spring Boot Offers?
+    The primary annotations that Spring Boot offers from this org.springframework.boot.autoconfigure package and its sub-packages. 
+    Here are a couple of basic ones:
+    . @EnableAutoConfiguration – used to auto-configure the beans on its classpath and automatically apply them.
+    . @SpringBootApplication – used to denote the main class of a Boot Application. This annotation combines @Configuration @EnableAutoConfiguration, 
+      and @ComponentScan annotations with their default attributes.
+
+2.  What is Spring Boot dependency management?
+    Spring Boot dependency management is used to manage dependencies and configuration automatically without you specifying the version for any of that dependencies.
+
+3. Can we create a non-web application in Spring Boot?
+   Yes, we can create a non-web application by removing the web dependencies from the classpath along with changing the way Spring Boot creates the application context.
+
+4. Is it possible to change the port of the embedded Tomcat server in Spring Boot?
+   Yes, we can replace the Embedded Tomcat server with any server by using the Starter dependency in the pom.xml file. Like you can use spring-boot-starter-jetty as a dependency
+   for using a jetty server in your project.
+
+5. Can we disable the default web server in the Spring boot application?
+   Yes, we can use application.properties to configure the web application type i.e spring.main.web-application-type=none.
+
+6. How to disable a specific auto-configuration class?
+   You can use exclude attribute of @EnableAutoConfiguration if you want auto-configuration not to apply to any specific class.
+   //use of exclude
+   @EnableAutoConfiguration(exclude={className})
+
+7. Explain @RestController annotation in Sprint boot?
+@RestController annotation. This annotation is used at the class level and allows the class to handle the requests made by the client.
+
+   It is a combination of @Controller and @ResponseBody, used for creating a restful controller. It converts the response to JSON or XML. It ensures that data returned by each method will
+   be written straight into the response body instead of returning a template.
+
+8. What is the difference between @RestController and @Controller in Spring Boot?
+   @Controller Map of the model object to view or template and make it human readable but @RestController simply returns the object and object data is directly written in HTTP response 
+   as JSON or XML.
+
+9. Describe the flow of HTTPS requests through the Spring Boot application?
+   . The Client makes an HTTP request(i.e GET, PUT, POST, etc.). 
+   . Then the HTTP request is forwarded to the Controller. The controller maps the request i.e client request. It processes the handles and calls the server logic.
+   . The business logic is performed in the Service layer. The spring boot performs all the logic over the data of the database which is mapped to the Spring Boot model or entity class
+     through JAVA Persistence Librery(JPA).
+   . Then he JSP page is returned as Response from the controller.
+     follow the diagram in interviewbit website.
+
+10. What is jPA?
+    Java Persistence API is a collection of classes and methods to persistently store the vast amounts of data into a database which is provided by the Oracle Corporation.
+    To reduce the burden of writing codes for relational object management, a programmer follows the ‘JPA Provider’ framework, which allows easy interaction with database instance. 
+    Here the required framework is taken over by JPA.
+    
+11. What is the difference between RequestMapping and GetMapping?
+    RequestMapping can be used with GET, POST, PUT, and many other request methods using the method attribute on the annotation. Whereas getMapping is only an extension of RequestMapping 
+    which helps you to improve on clarity on request. 
+
+12. What is the use of Profiles in spring boot?
+    While developing the application we deal with multiple environments such as dev, QA, Prod, and each environment requires a different configuration. For example, we might be using an 
+    embedded H2 database for dev but for prod, we might have Oracle or DB2. Even if DBMS is the same across the environment, the URLs will be different.
+
+**profiles in Spring Boot are a powerful feature that allows you to define different sets of configuration properties for different environments or use cases.like for devlopment 
+  perpose we use dev profile.for production perpose we use prod profile etc.
+spring.profiles.active=dev
+
+13. How to enable Actuator in Spring boot application?
+    To enable the spring actuator feature, we need to add the dependency of “spring-boot-starter-actuator” in pom.xml.
+   like:
+       <dependency>
+       <groupId> org.springframework.boot</groupId>
+       <artifactId> spring-boot-starter-actuator </artifactId>
+       </dependency>
+
+14. What are the actuator-provided endpoints used for monitoring the Spring boot application?
+    Actuators provide below pre-defined endpoints to monitor our application: 
+    Health, Info, Beans, Mappings, Httptrace, Heapdump, Threaddump, Shutdown.
+
+15. How to get the list of all the beans in your Spring boot application?
+    Spring Boot actuator “/Beans” is used to get the list of all the spring beans in your application.
+
+16. How to check the environment properties in your Spring boot application?
+    Spring Boot actuator “/env” returns the list of all the environment properties of running the spring boot application.
+
+17. How to enable debugging log in the spring boot application?
+    Debugging logs can be enabled in three ways:
+    . We can start the application with --debug switch.
+    . We can set the logging.level.root=debug property in application.property file.
+    . We can set the logging level of the root logger to debug in the supplied logging configuration file.
+
+18. Where do we define properties in the Spring Boot application?
+   You can define both application and Spring boot-related properties into a file called application.properties. You can create this file manually or use Spring Initializer to 
+   create this file. You don’t need to do any special configuration in Spring Boot to load this file.
+
+19. What is dependency Injection?
+    The way by which you decouple the conventional dependency relationship between the objects is known as dependency injection.
+     . Setter Injection: The IOC container will inject the dependent bean object into the target bean object by calling the setter method.
+     . Constructor Injection: The IOC container will inject the dependent bean object into the target bean object by calling the target bean constructor.
+     . Field Injection: The IOC container will inject the dependent bean object into the target bean object by Reflection API.
+
+20. What is an IOC container?
+    IoC Container is a framework for implementing automatic dependency injection. It manages object creation and its life-time and also injects dependencies into the class.
+
+21. What is bean?What is the bean life cycle?
+   The objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled,
+   and otherwise managed by a Spring IoC container.
+
+22. What is @bean annotation in Spring boot ?
+    One of the most important annotations in spring is the @Bean annotation which is applied on a method to specify that it returns an object that should be 
+     registered as a bean in the Spring application context.
+    Spring Bean annotation is usually declared in Configuration classes methods.
+
+23. due questions are different between different types of annotation(@service vs @ repository, @bean vs @autowired, @bean vs @component, @resource vs @autowired and somany)      
+
+24.Write some Spring Annotation+?
+
+@Lazy: This annotation is used to tell Spring to initialize the bean lazily. This means that the bean will not be initialized until it is needed.
+@Scope: This annotation is used to specify the scope of a bean. The scope can be singleton, prototype, or request.
+
+25.what is Sterotype annotation?
+
+26.Different between @Repository and @service?
+	:@Service is used to mark classes that provide business logic. This could include classes that perform calculations, validate data, or interact with other systems.
+         @Repository is used to mark classes that provide access to data. This could include classes that interact with a database, a file system, or an external API.
+	**Scope: By default, the scope of a class annotated with @service is singleton. This means that there will only be one instance of the class in the Spring container. 
+        The scope of a class annotated with @repository is prototype. This means that each time the class is injected into a bean, a new instance of the class will be created.
+***he UserRepository class is annotated with @repository because it provides access to data. The UserService class is annotated with @service because it provides business logic.
+ If you interchanged the annotations, it would be difficult to understand which class provides access to data and which class provides business logic.so if any developer want to change 
+any logic then it will be difficult for him.
+27.what is parentclass of jpa repository?
+	:The JpaRepository interface is extended by a number of other interfaces, such as CrudRepository, PagingAndSortingRepository, and QuerydslRepository.
+        These methods include save, findById, findAll, and delete.
+28.If you have more than one class in a bean then you have disable one class how you do?
+:e @Conditional annotation allows you to conditionally enable or disable a bean based on the presence of a certain condition.
+
+29.why we use microservice insted of monolithic architechture?
+
+30.what is competeble future?
+	:CompletableFuture is a class in Java that was introduced in Java 8 as part of the java.util.concurrent package. 
+         CompletableFuture allows you to execute tasks asynchronously. This means you can start a task and continue with other operations without blocking the main thread.
+CompletableFuture provides methods like thenApply, thenAccept, and thenRun which allow you to attach callbacks to the CompletableFuture .
+supplyAsync() method is used to create a CompletableFuture that will asynchronously return a String.
+**CompletableFuture is a powerful tool for writing asynchronous code. It can be used to write code that is more responsive to user input, to improve the performance of applications,
+ and to handle errors more gracefully.
+
+31.how we rest call external url in your service?
+32.how we implementing thread class? which is better way to iimplements thread class?
+***********************************************************************
+
+2. Explain the purpose of `@RestController` annotation in Spring Boot.
+:he @Controller annotation tells Spring Boot that the class is a controller, and the @ResponseBody annotation tells Spring Boot that the response body of all methods in the class 
+should be the return value of the method.
+
+**the annotation mark a class as a controller class that can be used to create the restfull api .basically it is combination of controller and response body.
+Basically the @responsebody annotation can be used to provide the body of an api whwn we can put this annotation then  this api axpect one json body .and if we dont give the json body 
+it will thow an exception.
+
+
+3. What is the difference between `@RequestMapping` and `@GetMapping` annotations in Spring Boot?
+:he @RequestMapping annotation is a more general annotation that can be used to map methods to any HTTP request. 
+:@GetMapping annotation is a shortcut for @RequestMapping(method = RequestMethod.GET), which means that it can only be used to map methods to GET requests.
+
+4. How do you handle dynamic path parameters in Spring Boot REST controllers?
+:you can use the @PathVariable annotation. The @PathVariable annotation tells Spring Boot that the parameter is a dynamic path parameter.
+5. What is the purpose of `@PathVariable` annotation in Spring Boot?
+:Dynamic path parameters in Spring Boot REST controllers are path parameters that can be any value. For example, the URL /products/{productId} could be used to retrieve a product by 
+its ID. The {productId} is the dynamic path parameter.
+
+6. How do you handle query parameters in Spring Boot REST controllers?
+7. Explain the usage of `@RequestBody` annotation in Spring Boot.
+**@RequestBody annotation tells Spring MVC to deserialize  that object from the HTTP request.
+: @RequestBody annotation is used to indicate that the incoming HTTP request body should be mapped to a method parameter. It is typically used in RESTful web services to extract the 
+  data sent by the client (usually in JSON or XML format) and convert it into a Java object or any other data type that you specify.
+
+8. What is the purpose of `@ResponseBody` annotation in Spring Boot?
+**@ResponseBody annotation is used to convert your return object into HTTP response in the form client is expecting like JSON, XML, or simply text.
+:@ResponseBody annotation tells Spring Boot that the response body of all methods in the class should be the return value of the method.
+
+9. How do you handle HTTP request headers in Spring Boot REST controllers?
+: The @RequestHeader annotation allows you to access and extract values from specific HTTP request headers and use them as method parameters in your controller methods.
+
+10. Explain the role of `@ResponseStatus` annotation in Spring Boot.
+11. What is the purpose of `@RestControllerAdvice` annotation in Spring Boot?
+12. How do you implement pagination in Spring Boot REST APIs?
+13. Explain the concept of content negotiation in Spring Boot REST controllers.
+14. What is the purpose of `@RequestMapping` at the class level in Spring Boot?
+15. How do you handle exception handling in Spring Boot REST APIs?
+:One way is to use the @ExceptionHandler annotation. The @ExceptionHandler annotation can be used to map specific exceptions to specific handler methods.
+
+16. Explain the usage of `@RequestParam` annotation in Spring Boot.
+@RequestParam is an annotation used to bind a web request parameter to a method parameter in a controller method. 
+
+17. What is the purpose of `@CrossOrigin` annotation in Spring Boot?
+18. How do you implement input validation in Spring Boot REST controllers?
+: One way is to use the @Valid annotation. The @Valid annotation can be used to validate the request body or request parameters.
+19. Explain the usage of `@RequestHeader` annotation in Spring Boot.
+:` The @RequestHeader annotation in Spring Boot is used to bind request headers to method parameters. 
+It is a convenient annotation that can be used to extract request headers from the request.
+20. What are the differences between `@RestController` and `@Controller` annotations in Spring Boot?
+: The @RequestHeader annotation in Spring Boot is used to bind request headers to method parameters. 
+It is a convenient annotation that can be used to extract request headers from the request.
+
+
+

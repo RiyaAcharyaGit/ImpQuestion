@@ -1,0 +1,841 @@
+1. What is Java?
+  Java is the high-level, object-oriented, robust, secure programming language, platform-independent, high performance, Multithreaded, and portable programming language. 
+It was developed by James Gosling in June 1991. It can also be known as the platform as it provides its own JRE and API.
+
+**
+Java is called a platform-independent language because it is run on vertual mechine,in case of java ,it is run on softwere platfrom top of any hardwere platform(os) that why its run smoothly
+in windows,lenux,apple.
+
+***JNI(Java Native Interface):JNI is a programming framework that allows Java code running in the Java Virtual Machine (JVM) to interact with native code written in 
+                             languages like C, C++, or assembly. This is useful when you need to access platform-specific features,use existing native libraries.
+***JIT(Just In Time):a Java program is executed, the JVM's JIT compiler translates bytecode into machine code.and jvm performance is fast.
+  
+2. How many access spacifire is their in java/ explain about those?
+  a. Private: The existence of a private modifier is only within the class. It cannot be accessed from outside the class.
+  b. Default: The existence of a default modifier is only within the package. It cannot be accessed from outside the package.
+  c. Protected: The access level of a protected modifier is within the package and outside the package through child class.
+               If you do not make any the child class,then it cannot be accessed from outside the package.
+  d. Public: The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, 
+             within the package and outside the package.
+
+3. What should return the below code?
+            int test() {
+		try {
+			int a= 1/0;
+			return 1;
+		}catch(Exception e) {
+			return 2;
+		}finally {
+			return 3;
+		}
+	    }
+   In this code catch block and finally block will be  excuted because if try block it will get null pointer exception, so catch block will be executed first
+   and then as finally block always execute then finally block also executed here after catch block.So 2 is override by 3.
+
+4. Can we declare the main method inside the interface? 
+   Before java 8 we can't create or declare main method or static method inside the interface. But after java 8 we can declare static method inside the interfce,
+   as main method is static so we can delacre main method inside the interface.
+
+5. Can we update the map key during execution time?
+   No. we can't update map key during execution time.The keys in a Map are typically treated as immutable
+
+6. Can we make the Constructor private? can we make constructor final?
+   Yes, we can make a constructor as private. But if we make constructor as private then we can't create any object of that class outside of that class. Then that constructor is used
+   as a singleton Design Pattern.
+
+	No, we cannot make a constructor final in Java. The final keyword is used to prevent methods from being overridden, but constructors cannot be overridden in Java
+        (because onstructor can not have return type), so there is no need for the final keyword. If you try to make a constructor final, you will get a compile-time error.bcz 
+        final keyword acpet for method variable and class.
+
+**Interface we can not make as final because in general in interface having abstruct method so we have to implement but in final we can not implement or override the method once its created.
+
+7. Which block should execute first-static block or constructor or instance method ?
+   when you have all three in one class then static block will executed first(if static method is present there so static method also executed after static block) then constructor will execute 
+   then instance method will be executed.
+
+8. What is Mutable and Immutable in Java?	`
+   The Mutable Class or Object that can be changed to any value or any state without adding any new object. Example:  Java.util.Date, StringBuilder, StringBuffer, etc.
+   Whereas Immutable Class or Object that can't be changed to any value or any state once it is created. primitive objects such as int, long, float, double, all legacy classes, 
+   Wrapper class, String class, etc.
+
+9. Difference between iterator and list iterator?
+   a. In java an Iterator is an interface and by Iterator we can traverse the elements of a list in a forward direction but 
+      ListIterator is an interface that extends the Iterator interface and by ListIterator we can traverse the elements in both forward and backward directions.
+   b. Iterator helps to traverse Map, List and Set. but ListIterator Can only traverse List and not the other two.
+   c. Methods of Iterator are next(), remove() and hasNext() but Methods of ListIterator are next(), previous(), hasNext(), hasPrevious().
+
+10. Diff between comparable and comparator?
+
+   a. Comparable provides a single sorting sequence.but The Comparator provides multiple sorting sequences.
+   b. Comparable provides compareTo() method to sort elements. but Comparator provides compare() method to sort elements.
+   c. Comparable is present in java.lang package. but  Comparator is present in the java.util package.
+   d. Both are used to sort our user define method or data type in java.
+
+
+
+class Student implements Comparable<Student> {
+  private String name;
+  private int age;
+
+  public Student(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  @Override
+  public int compareTo(Student otherStudent) {
+    if (this.age == otherStudent.age) {
+      return this.name.compareTo(otherStudent.name);
+    } else {
+      return this.age - otherStudent.age;
+    }
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    // Create a list of students
+    Student[] students = new Student[] {
+      new Student("Alice", 18),
+69      new Student("Bob", 20),
+      new Student("Carol", 19),
+    };
+
+    // Sort the students in ascending order by age
+    Arrays.sort(students);
+
+    // Print the sorted list of students
+    for (Student student : students) {
+      System.out.println(student.name + ", " + student.age);
+    }
+  }
+}
+
+
+11. When will the finally block not be executed?
+   When the System.exit(),system crash,system off(it means JVM is exist) method is called in the try block before the execution of finally block, finally block will not be executed.
+
+12. Type of interface in java?
+   In java An interface is a blueprint of a class.So it is similar to the class but we can not create object of any interface .In interface we can provide abstruct method but after java 8
+we can provide default and static method.if we declare a method we need to implements that interface to a class and ovverride the method to give the body of that abstract method.
+ It has static constants and abstract methods.
+   3 Types of interface:
+   a. Functional Interface: When an interface contains only one abstract method, then it is known as a Functional Interface.
+   b. Marker Interface: An interface that does not contain any methods, fields, Abstract Methods, and any Constants is Called a Marker interface.
+   c. Normal Interface:
+   Examples of Functional Interfaces: 
+        Runnable : It contains only  run()  method.
+        Comparable : This interface only contains the compareTo() method.
+        Callable : This interface only contains the call() method.
+        ActionListener : It contains only  actionPerformed()
+        ItemListener : It contains only  itemStateChanged() method
+   Types of Marker Interface:
+        Cloneable Interface: Cloneable interface is a marker interface that belong to java.lang package.  We can implement the interface in the class of which class object to be cloned.
+                             It indicates the clone() method of the Object class.
+        Serializable Interface: This Marker interface is defined in the java.io package. If we want to make the class serializable, we must implement the Serializable interface. 
+        Remote Interface: Remote interface is a marker interface that belong to java.rmi package. It marks an object as remote that can be accessed from another machine (host). 
+                          We must implement the Remote interface if we want to make an object as remote.
+
+**Object Clonning: Basically object clonning is a process where we copy of an existing object by implementing the clonable interface and override the clone method that is return super.clone()
+which is present in object class.
+
+11.What is an anonymous inner class?
+    It is an inner class without a name . An anonymous inner class can be useful when making an instance of an object 
+    with overriding methods of a class or interface.
+
+
+public class OuterClass {
+    public void methodWithInnerClass() {
+        // Creating an anonymous inner class that extends a class
+        SuperClass obj = new SuperClass() {
+            public void method() {
+                // Inner class implementation
+                // ...
+            }
+        };
+        
+        // Using the anonymous inner class
+        obj.method();
+    }
+}
+
+***************
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance of an anonymous inner class that implements the Runnable interface
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("This is an anonymous inner class.");
+            }
+        };
+
+        // Now, you can use myRunnable to execute the run method
+        Thread thread = new Thread(myRunnable);
+        thread.start();
+    }
+}
+
+*************
+interface MyInterface {
+    void doSomething();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an anonymous inner class that implements MyInterface
+        MyInterface myAnonymousClass = new MyInterface() {
+            @Override
+            public void doSomething() {
+                System.out.println("Anonymous inner class implementation");
+            }
+        };
+
+        myAnonymousClass.doSomething(); // Calls the overridden method
+    }
+}
+
+
+
+14. What is Method reference in java?
+    Method reference is used to refer method of functional interface.it is used to enable our functional programming.
+    Types of Method References:
+    a.Reference to a static method: Example should be follow from javatpoint.
+    b.Reference to an instance method: Example should be follow from javatpoint.
+ 	interface Sayable{  
+    void say();  
+}  
+public class InstanceMethodReference {  
+    public void saySomething(){  
+        System.out.println("Hello, this is non-static method.");  
+    }  
+    public static void main(String[] args) {  
+        InstanceMethodReference methodReference = new InstanceMethodReference(); // Creating object  
+        // Referring non-static method using reference  
+            Sayable sayable = methodReference::saySomething;  
+        // Calling interface method  
+            sayable.say();  
+            // Referring non-static method using anonymous object  
+            Sayable sayable2 = new InstanceMethodReference()::saySomething; // You can use anonymous object also  
+            // Calling interface method  
+            sayable2.say();  
+    }  
+}  
+    c.Reference to a constructor: Example should be follow from javatpoint.
+
+15. Lambda expression in java?
+    Lambda expression is a new and important feature of Java 8,
+    Lambda expression is a short block of code which takes a function as a parameters and returns a value. Lambda expression is used to enable functional programming.
+    It is used to reduce the boiler plate code.
+    Syntax: 
+    parameter -> expression
+    (parameter1, parameter2) -> expression
+    (parameter1, parameter2) -> { code block } 
+
+16. What are varargs in java?
+    The varrags allows the method to accept zero or muliple arguments. Before varargs either we use overloaded method or take an array as the method parameter but
+    it was not considered good because it leads to the maintenance problem. If we don't know how many argument we will have to pass in the method, varargs is the better approach.
+    untill java 1.4 we cant declare a method with variable no. of arguments inside a class. If there is any change in the number of arguments, we have to declare a new method with different arguments.
+    then we have to overload that method for multiple times for multiple arguments. but  From java 1.5 onwards, we can declare a method with a variable number of arguments without overloading that method
+    for multple times.
+    Syntax:
+    return_type method_name(data_type... variableName)
+    {
+     // method body
+    }   
+
+17. Can we change map key and value during the iteration?
+    For external iteration(like for loop) we can do but for internal iteration(like while loop) we can not.
+In Java, you cannot directly change the key or value of a map while iterating over it using a basic Iterator or enhanced for loop (for-each loop). Modifying the structure of a map during iteration can 
+lead to unexpected results, such as a ConcurrentModificationException or inconsistent behavior.
+Map<String, Integer> map = new HashMap<>();
+map.put("A", 1);
+map.put("B", 2);
+map.put("C", 3);
+
+List<String> keysToModify = new ArrayList<>();
+for (Map.Entry<String, Integer> entry : map.entrySet()) {
+    if (entry.getValue() == 2) {
+        keysToModify.add(entry.getKey());
+    }
+}
+
+for (String key : keysToModify) {
+    Integer value = map.get(key);
+    map.put(key, value + 1);
+}
+
+System.out.println(map);  // Output: {A=1, B=3, C=3}
+
+
+18. What is a multi-catch block? And why do we need this?
+    when we are using miultiple catch block within only one try block for handling multiple exception is called multi-catch block.
+    A try block can be followed by one or more catch blocks. Each catch block must contain a different exception handler. So, if you have to perform different tasks at 
+    the occurrence of different exceptions, use java multi-catch block.
+           a. At a time only one exception occurs and at a time only one catch block is executed.
+           b. All catch blocks must be ordered from most specific to most general, i.e. catch for ArithmeticException must come before catch for Exception.
+
+   we need multi-catch block because multiple catch block is used to handle different types of exceptions means each catch block is used to handle different type of exception.
+
+19. Difference between final, finally and finalize ?
+    . Final is the keyword and which is used to declare any class, method or variable as constant.
+      Finally is the block in Java Exception Handling to execute the important code whether the exception occurs or not.
+      Finalize() method in Java is a method of the Object class that is used to perform cleanup activity before destroying any object. It is called by 
+      Garbage collector before destroying the objects from memory. 
+    . Final keyword is used with the classes, methods and variables.
+      Finally block is always related to the try and catch block in exception handling.
+      finalize() method is used with the objects.
+    . Final method is executed only when we call it.
+      Finally block is executed as soon as the try-catch block is executed. It's execution is not dependant on the exception.
+      Finalize method is executed just before the object is destroyed.
+
+20. What is thread ?
+    A Thread is a very light-weighted process, or we can say the smallest part of the process that allows a program to operate more efficiently by running multiple tasks simultaneously.
+    we can make our own thread by thread class or Runnable interface.
+
+21. What is Optional Class in java? Why we use Optioanl class in java?
+    Optional is a class which is introduced in java 8. It is a public final class and used to avoid or handel our NullPointerException in Java application. 
+    It provides methods which are used to check the presence of value for particular variable. methods are isEmpty(), isPresent(),ofNullabe(),Nullable() etc.
+optional.empty(),optional.ofNullable().optional.offNullable()
+
+**Optional class is final ->to prevents developers from accidentally creating subclasses of the Optional class that break the immutability guarantee.
+
+22. How do we implement thread ?
+    You can create threads by implementing the runnable interface and overriding the run() method. Then, you can also create a thread object of Thread class and call the start() method.
+     . Implementing the java.lang.Runnable interface.
+     . Extending the java.lang.Thread class.
+
+class MyRunnable implements Runnable {
+    public void run() {
+        // Code to be executed in the new thread
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Thread: " + i);
+        }
+    }
+}
+
+public class RunnableExample {
+    public static void main(String[] args) {
+        MyRunnable myRunnable = new MyRunnable(); // Create an instance of the Runnable class
+        Thread thread = new Thread(myRunnable); // Create a new Thread with the Runnable as a target
+        thread.start(); // Start the thread, which calls the run() method of the Runnable
+    }
+}
+
+
+23. Hierarchy of collection framework in java ?
+     Go with javatpoint.
+
+24. Difference between list and set ?
+    . List can contain duplicate value but Set can not contain duplicate value.
+    . List is an ordered sequence of elements whereas Set is a distinct list of elements which is unordered. 
+
+25. Difference between stringbuilder and string buffer ?
+    . StringBuffer is synchronized i.e. thread safe. It means two threads can't call the methods of StringBuffer simultaneously.
+      but StringBuilder is non-synchronized i.e. not thread safe. It means two threads can call the methods of StringBuilder simultaneously.
+    . StringBuffer is less efficient than StringBuilder but StringBuffer is less efficient than StringBuilder.
+    . StringBuffer was introduced in Java 1.0 but StringBuilder was introduced in Java 1.5.
+
+26. What is an instanceof keyword in java ?
+    The java instanceof operator is used to test whether the object is an instance of thAT CLASS (class or subclass or interface). The instanceof in java is also known as type 
+    comparison operator because it compares the instance with type. It returns either true or false. 
+
+27. What is aggregation in java ?
+    In java Aggregation means relationship between two classes or entities. In java there is two type of relationship i.e IS-A relationship and HAS-a relationship.
+
+28. What is an Is-A & Has-A Relationship ?
+    Whenever one class inherits another class, it is called an IS-A relationship. Ex: Apple(Child Class) is a Fruit(Parent), Car(Child) is a Vehicle(Parent) etc.
+    Whenever which means when a class has reference of another class as a member variable is known as Has_A reletionship. Ex: Maruti(Child class of Parent Class Car) has Engine.
+    class A has-a relationship with class B, if class A has a reference to an instance of class B.
+	Class Address{
+	int street_no;
+	String city;
+	String state;
+	int pin;
+	Address(int street_no, String city, String state, int pin ){
+	this.street_no = street_no;
+	this.city = city;
+	this.state = state;
+	this.pin = pin;
+	}
+	}
+
+	class Student
+	{
+	  String name;
+	  Address ad;
+	}
+
+
+	***Copy Constructor:a copy constructor is a constructor that creates a new object by copying the state of an existing object of the same class.we create copy constructor by passing
+           the method parameter as a instance of that class . 
+	class Person {
+  private String name;
+  private int age;
+
+  public Person(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // Copy constructor
+  public Person(Person person) {
+    this.name = person.name;
+    this.age = person.age;
+  }
+}
+
+29. Difference between interface and abstract class ?
+     Both are using for achieve abstraction.
+    1) Abstract class can have abstract and non-abstract methods. Interface can have only abstract methods. Since Java 8, it can have default and static methods also.
+    2) Abstract class doesn't support multiple inheritance. Interface supports multiple inheritance.
+    3) Abstract class can have final, non-final, static and non-static variables. Interface has only static and final variables.
+    4) The abstract keyword is used to declare abstract class. The interface keyword is used to declare interface.
+
+**When you have to use abstract class or when interface?
+Use an abstract class when:
+You need to provide some default implementations for methods that are common to all subclasses.
+An Animal abstract class could be used to define the behavior of all animals, such as dog, cat, and fish. 
+The abstract class could contain abstract methods such as makeSound(), and concrete methods such as getWeight().
+
+Use an interface when:
+You need to allow multiple classes to implement the same set of methods, even if they are not related.
+A Flyable interface could be used to define a set of methods that any class that can fly must implement, such as takeOff() and land().
+
+30. What is a singleton class?
+    A singleton class is a class that can have only one object (an instance of the class) at a time. After the first time, if we try to instantiate the Singleton class,
+    the new variable also points to the first instance created.
+
+31. What is shallow copy and deep copy ?
+     When we do a shallow copy of some entity to create two or more than two entities such that changes in one entity are reflected in the other entities as well,
+     that is shallow copy. 
+    And When we do a copy of some entity to create two or more than two entities such that changes in one entity are not reflected in the other entities,
+    that is deep copy.
+
+32. What is Type Casting in Java ?
+    Type casting is a method or process that converts a data type into another data type in both ways manually and automatically. 
+    In Java, there are two types of casting:
+    a. Widening Casting (automatically) - converting a smaller type to a larger type size like: byte -> short -> char -> int -> long -> float -> double.
+    b. Narrowing Casting (manually) - converting a larger type to a smaller size type like: double -> float -> long -> int -> char -> short -> byte.
+double numDouble = 5.6;
+int numInt = (int) numDouble;
+
+33. What is the super class of all classes in java?
+    Object is the super class of all classes in java.
+	hashcode,toString,notify,notifyAll,wait,getclass,equals,finalize,clone()
+	
+34. Is void is a keyword ?
+    Yes void is a java Keyword. The void keyword specifies that a method should not have a return value.
+
+35. If the marker interface is empty, then why do we need this ?
+    Marker interface is used as a tag that inform runtime to the Java compiler by a message so that it can add some special behavior to the class implementing it. 
+   Java marker interface are useful if we have information about the class and that information never changes, in such cases, we use marker interface.
+
+36. What is Stream API in java 8?
+ The Stream API is a new features in java that is introduced in Java 1.8. It provides a way for processing the collections of data .It is a 
+    sequence of elements that can be operated in a sequential or parallel manner. It is used to perform different operations on collections, such as 
+    filtering, mapping, and reducing.
+
+37. Types of Operation in Stream API?
+    There are two types of operations in stream. 
+    1. Terminal Operation: These operations are used to produce results. They can’t be used for chaining the other methods.
+        Example: sorted(Comparator<T>), count(),min(),max(),foreach(),toArray(),collect(),reduce() etc.
+    2. Intermidiate Operation: These operations are used to pipeline other methods and to transform into a new  streams. They don’t produce results because these operation does not
+       invoke until the terminal operation gets executed.
+        Example: filter(),map(),reduce()etc.
+
+38. Is the stream lazy and eager ?
+    Yes, Stream is lazy because intermediate operations are not invoked unless terminal operation is executed. Each intermediate operation creates a new stream, stores the provided 
+    operation/function and return the new stream. The pipeline accumulates these newly created streams.
+
+39. What is lazy loading and eager loading ? 
+**Lazy loading and eager loading are two different ways of loading data in object-oriented programming (OOP). Lazy loading delays the loading of data until it is actually needed, 
+  while eager loading loads all of the data at once.
+s
+
+40. What are Generics in Java?
+    Java Generics programming is used to deal with type-safe objects which is introduce in java 1.5. It makes the code stable by detecting the bugs at compile time.
+    There are mainly 3 advantages of generics:
+    . Type-safety: We can hold only a single type of objects in generics. It doesn?t allow to store other objects.
+    . Type casting is not required: There is no need to typecast the object.
+    . Compile-Time Checking: It is checked at compile time so problem will not occur at runtime. The good programming strategy says it is far better to handle the problem at 
+      compile time than runtime.
+
+Before generics:
+// This code is type-safe, but it is cumbersome and error-prone.
+List list = new ArrayList();
+list.add("Hello");
+list.add(new Integer(10));
+
+// This code will throw a ClassCastException at runtime.
+String str = (String) list.get(1);
+
+
+41. Why are we called the REST API as a restful API ?
+    Because of REST API return JSONObject.
+
+42. Difference Between DataTime API Before java8 and java8 ?
+java.time package,immubility,thread safty
+LocalDate: Represents a date without a time.
+LocalTime: Represents a time without a date.
+LocalDateTime: Represents a date and time without a time zone.
+ZonedDateTime: Represents a date and time with a time zone.
+Instant: Represents a point in time in UTC.
+Duration: Represents a period of time.
+Period: 
+---->convert date to string <-------
+**import java.time.DateTimeFormatter;
+import java.util.Date;
+
+public class Example {
+  public static void main(String[] args) {
+    Date date = new Date();
+
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    // Call the format() method on the DateTimeFormatter object, passing in the Date object that you want to convert.
+    String strDate = dateFormat .format(date);
+
+    // Print the formatted date.
+    System.out.println(strDate);
+  }
+}
+
+----------->convert string to date------
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Example {
+  public static void main(String[] args) {
+    String strDate = "2023-09-26";
+
+    // Create a SimpleDateFormat object with the desired format pattern.
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    // Call the parse() method on the SimpleDateFormat object, passing in the String that you want to convert.
+    Date date = (strDate.perse{()0);
+
+    // Print the parsed date.
+    System.out.println(date);
+  }
+}
+
+
+43. Difference between static nested class and inner class.
+    A static class is a class that is created inside a class, is called a static nested class in Java. It cannot access non-static data members and methods. It can be accessed by outer class name.
+     . It can access static data members of the outer class, including private.
+     . The static nested class cannot access non-static (instance) data members.
+    An Inner class is a class which is nested within another class. An Inner class has access rights for the class which is nesting it and it can access all variables and methods defined in the outer class.
+
+44. Difference between stream and parallel stream.advantage of stream?
+   he main difference between a stream and a parallel stream is that a stream is executed sequentially, while a parallel stream is executed in parallel on multiple threads. This means 
+   that a parallel stream can potentially be faster than a stream, but it can also be more complex to write and debug.
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class ParallelAverage {
+
+    public static void main(String[] args) {
+        // Create a list of numbers
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Find the average of the numbers using a parallel stream
+        double average = numbers.parallelStream()
+            .mapToInt(x -> x)
+            .average()
+            .getAsDouble();
+
+        // Print the average
+        System.out.println("The average is " + average);
+    }
+}
+
+**double average = numbers.stream()
+            .mapToInt(x -> x)
+            .average()
+            .getAsDouble();
+
+45. What is the default port while connecting with mysql using jdbc.
+    Port 3306 is the default port for the classic MySQL protocol.  
+
+46. What is a collection?
+    The Collection in Java is a framework that provides an architecture to store and manipulate the group of objects.
+    show the Hierarchy of collection framework from javatpoint.
+
+47. Difference between SOAP API and REST API?
+     . SOAP stands for Simple Object Access Protocol. REST stands for REpresentational State Transfer.
+     . SOAP API can't use REST API because it is a protocol. REST API can use SOAP web services because it is a concept and can use any protocol like HTTP, SOAP.
+     . SOAP API permits XML data format only. REST API permits different data format such as Plain text, HTML, XML, JSON etc.
+     . SOAP API is less preferrable than REST API. REST API is more preferrable than SOAP API.
+**soap only consume the xml data, it is very secure rather than the rest bcz itgive the data in an encrypted form,It is heavy weight and we used soap api in security purpose application like banking
+**Rest api consume the json data .it is less secure and we used web application. 
+
+**SOAP stands for Simple Object Access Protocol. It is a protocol that defines how applications exchange information over a network. SOAP uses XML to encode 
+   data and HTTP as a transport protocol.
+**REST stands for Representational State Transfer. It is an architectural style that defines how resources are represented, accessed, and manipulated over a network. 
+REST APIs can use a variety of data formats, including JSON, XML, plain text, and HTML.
+
+48. Difference between final and effectively final in java? 
+     . The effectively final variables refer to local variables that are not declared final explicitly and can't be changed once initialized. 
+       A lambda expression can use a local variable in outer scopes only if they are effectively final.
+     . In Java, we can use final keyword with variables, methods, and classes. When the final keyword is used with a variable of primitive data types(such as int, float, etc), 
+       the value of the variable cannot be changed. 
+      ***effective final are the variables that refer to the local variables which one have declare it can not be changed in a scope 
+
+49. Explain exception handeling using try catch block with example.
+    The try-catch is the simplest method of handling exceptions. Put the code you want to run in the try block, and any Java exceptions that the code throws are caught by one or more catch blocks. 
+    This method will catch any type of Java exceptions that get thrown. This is the simplest mechanism for handling exceptions. 
+    Example: 
+                 int test() {
+		  try {
+			int a= 1/0;
+			return 1;
+		  }catch(Exception e) {
+			return 2;
+		  }finally {
+			return 3;
+		  }
+	      }
+
+50. Types of Exceptions in java?
+    a. Checked Exception: The classes that directly inherit the Throwable class except RuntimeException and Error are known as checked exceptions. For example, IOException, SQLException, etc. 
+       Checked exceptions are checked at compile-time.
+    b. Unchecked Exception: The classes that inherit the RuntimeException are known as unchecked exceptions. For example, ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, etc. 
+       Unchecked exceptions are not checked at compile-time, but they are checked at runtime.
+    c. Error: Error is irrecoverable we can not handel the error. Some example of errors are OutOfMemoryError, VirtualMachineError, AssertionError etc.
+
+try {
+  // Code that may throw an exception
+} catch (Exception e) {
+  System.out.println("An exception occurred!");
+  System.exit(1);
+} finally {
+  System.out.println("This will always be printed!");
+}
+
+output:"This will always be printed!"
+}
+
+**system.exit() method is called in the catch block, the finally block is still executed. This is because the system.exit() method does not immediately exit the program. Instead, 
+it schedules the program to be exited at a later point. This gives the finally block a chance to execute before the program exits
+
+51. What is meta Space in java?
+	:Metaspace is the storage area in the Java Virtual Machine (JVM) where metadata about classes and classloaders is stored. It is part of the native memory rather than the Java heap memory. Metaspace
+        is designed to be more flexible and scalable compared to the PermGen space. it is introducced in java 8.It allocate the size dynamically.So we can store the static method variable
+        or class in meta  space beacuse its take memory at the time of class loading.
+
+52. Lambda Expression vs Method reference?
+    In lambda expression we can write the dynamic body but in method reference we can refer the method of that functional interface.
+
+53. why we can not override static method?
+    Override is happen in runtime but when we declare a method as static then it allocates memory in stack memory that means in compile time static method allocates in class loader memory and also 
+    static is a class property.
+
+what is orm, orm vs raw query, @repo vs @service, sql injection, pathvariable vs requestparams, autorization vs authentication, oops concept.
+
+
+56.what is gurbage       
+JVM controls the garbage collector. JVM decides when to perform the garbage collection. We can also request to the JVM to run the garbage collector. When Java program request for the garbage collector, the JVM usually grants the request in short order. 
+It does not make sure that the requests accept.Every Java program has more than one thread. Each thread has its execution stack. There is a thread to run in Java program that is a main() method. Now we can say that an object is eligible for garbage 
+collection when no live thread can access it.The garbage collector considers that object as eligible for deletion. If a program has a reference variable that refers to an object, that reference variable available to live thread, this object is called reachable.
+
+**gurbage  collection is a process by which jvm can reclaim the unused memory from the heap area. The default garbage collector is the Parallel Garbage Collector (PGC). jvm control the gurbage 
+collection operation. The PGC is a concurrent garbage collector, which means that it can run in parallel with the application threads.
+
+60.diff between colletor and collectors?
+
+Collector is an interface in the Java Stream API that defines how the elements of a stream should be collected into a result container.
+Collectors is a utility class in the Java Stream API that provides static methods for creating commonly used collectors.
+Collectors.toList(), Collectors.toSet(), Collectors.groupingBy()
+
+61.diff between Collection and Collectins?
+
+I.Collection is a interface and collections is a class.
+II.Collection is used to store and manupulate the group of data .and Basically collections is used to sorting that collection data.
+III.Collection interface provide some method that can be used for data structure like list ,set etc but in collections provide some static method that used for varous operation on collection.
+
+57.what is diff between parameterized and copy constructor?
+ the key difference between a parameterized constructor and a copy constructor lies in their purposes and usage. A parameterized constructor is used to initialize an object with specific values passed as arguments,
+ while a copy constructor is used to create an independent copy of an existing object.
+******getter and setter methods are used to provide access to the private member variables of a class and to control how they are accessed and modified. 
+**  singleton,prototype,session,globalsession,request.
+58.@Configuration:userdefind bean stroted in ioc.
+59.@enableautocongoguration:predefind bean strored in ioc.
+60.@Bean annotation in Spring Boot is used to declare a method that returns a bean to be managed by the Spring container.
+ The @Bean annotation is typically used in configuration classes, 
+61.@Controller annotation in Spring Boot is used to mark a class as a controller. Controllers are responsible for handling HTTP requests and returning responses. 
+62.@componantScan:its scan the basepkg ,subpkg to identify its annotated class and configure them in springboot.
+
+63.what is dynamic method dispatched?
+
+64.Agile method:Agile mtehod is a Project manegment Process which is based on a strict plan for continous improvment and its basically focused on customer feedback and iterative development
+.
+65. the main differences between HashSet and TreeSet in Java:
+
+Storage: HashSet stores elements in a hash table, while TreeSet stores elements in a binary search tree.
+Order: HashSet does not maintain any order of its elements, while TreeSet maintains elements in sorted order.
+Null values: HashSet allows null values, while TreeSet does not allow null values.
+Performance: HashSet is generally faster than TreeSet for operations such as add, remove, and contains, since it does not need to sort the elements.
+However, TreeSet is faster for operations such as finding the minimum or maximum element.
+Use cases: HashSet is a good choice when you need a collection that does not need to be sorted and can contain null values. TreeSet is a good choice when you need a collection that 
+needs to be sorted and cannot contain null values.
+
+66.can we make any object of a class as final in java?
+	:
+No, you cannot make any object of a class as final in Java. The final keyword can only be used to declare a class, method, or variable. If you try to declare an object as final, 
+you will get a compile-time error.
+
+The reason for this is that the final keyword is used to indicate that the entity cannot be changed. An object, on the other hand, is a reference to a memory location. 
+The memory location can be changed, so the object cannot be final
+
+67.What is advantage of immutable class?
+
+Thread safety: Immutable objects cannot be changed by any thread, so they are inherently thread-safe. This can be a major advantage in multithreaded applications,
+Ease of use: Immutable objects are easier to use than mutable objects because they do not require any synchronization or locking mechanisms.
+Secure: we can not inherit the immutable classs because it is final. 
+
+68.map vs flatmap?
+Map is an interface that represents a collection of key-value pairs. The keys are unique, and the values can be any type of object. The Map interface provides methods for adding, removing, and retrieving elements, 
+as well as methods for iterating over the elements.
+FlatMap is a functional programming construct that takes a function and a collection and returns a new collection that contains the results of applying the function to each 
+element of the collection. 
+Methods	->Add, remove, retrieve, iterate and in case of flatmap	Flattern, map
+Unique keys->	Yes	No
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+List<Integer> squares = numbers.stream().flatMap(x -> Arrays.asList(x * x)).collect(Collectors.toList());
+
+System.out.println(squares);
+
+69. why checked exceptions are checked at compile time in java?
+   Checked Exceptions are checked at compile time because it ensures that the programmer have to think about the possible exceptions which can occur in the code, So it helps to protect
+   from getting some error at runtime.
+
+70.What is reflection api?
+Refelction api is an api that can used to modify behaviour of classes interfaces and method at run time.
+
+71.how you control your application response time in spring boot project?`
+
+i.Caching: Implement caching mechanisms (e.g., Spring Cache, Redis) to store frequently accessed data in memory. 
+ii.Optimize Dependencies: Review and minimize the number of dependencies in your project. Unused or unnecessary dependencies can slow down application startup times.
+iii.monitoring: used Tools like Spring Boot Actuator, Prometheus, and Grafana can help monitor application metrics.
+
+72.If any problem occure in production how you solve?
+   
+Check Logs:Examine application logs for error messages and stack traces.Check the console what type of error are occure.
+Check External Dependencies:Verify if external services (e.g., databases, APIs) are functioning correctly.
+
+73.How we solve the dimond problem by using interface with same method
+interfacename.super{.methodname();
+
+73.What is exception propagation?
+Exception propagation in Java is the process of passing an exception from one method to another.Basically it is occure when one exception is occure but it is not handle by the same catch block
+then it is called the caller stack untill it is handled. 
+
+74.What is autoBoxing and autoUnboxing?
+primitive datatype is converted into wrapperclass that is called autoboxing.
+wrapperclass converted into primitive datatype that is called autounnboxing.
+
+75.diff between Stringclass and wrapper class?
+
+All the wrapper class having perticular data type but in case of String there are no data type .
+
+**The wrapper class  is a class whose object wraps into primitive data type.in Java provides the mechanism to convert primitive into object and object into primitive.
+
+76.why String is immutable?
+
+String is immutable because once we declear a string with or without using new keyword then the value of the string can not change because of immutable.
+
+77.	try {
+			String str = null;
+			// This will throw a NullPointerException
+			int length = str.length();
+			} catch (Exception e) {
+			// System.out.println("Caught NullPointerException");
+			System.exit(1); // Exiting the program
+			} finally {
+			System.out.println("Inside finally block");
+			}
+
+**If in try is there any type of code which get a exception in catch block then catch block will be executed programme terminated but if nothing like that then finally block executed.
+
+78.If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception but it can declare unchecked exception. why?
+
+1.when we throw a compile time exception complier fast check the parent class method if there also compile time exception then it not giving error but if there is no such exception then it 
+will break polimphism rule .
+import java.io.*;    
+class Parent{   
+  
+  // defining the method   
+  void msg() {  
+    System.out.println("parent method");  
+    }    
+}    
+    
+public class TestExceptionChild extends Parent{    
+  
+  // overriding the method in child class  
+  // gives compile time error  
+  void msg() throws IOException {    
+    System.out.println("TestExceptionChild");    
+  }  
+  
+  public static void main(String args[]) {    
+   Parent p = new TestExceptionChild();     
+   p.msg();    
+  }    
+}    
+
+exception stcak-> Exception->runtimeException -------->parent exception->child exception (overriding)
+try-catch block ->child exception -> parentException
+
+79.What is annotation?type of annotation?
+
+Annotations in Java provide additional information to the compiler and JVM. An annotation is a tag representing metadata about classes, interfaces, variables, methods, or fields.
+1.predefind annotation ->@ovverride,@funtionalInterface
+2.userdefind annotation
+3.meta annotation->@tergate,@Retention
+
+80.how we overcome dimond problem?
+interface I {
+	default void method() {
+		System.out.println("inside I inteface");
+	}
+}
+
+interface I1 {
+	default void method() {
+		System.out.println("inside I1 inteface");
+	}
+}
+class Abc implements I,I1{
+
+	@Override
+	public void m1() {
+		I1.super.method();
+	}
+	
+}
+
+public class MainClass{
+
+	public static void main(String[] args) {
+		new Abc().method();
+
+	}
+
+}
+
+81.what is hashcollision?
+when we store data in form key-value pair in hashmap .the hasmap internally call the hashtable and hashcode of key is used to indexing in hashtable.so by accidently two hashcode is same then
+it is known as hashcollition.
+for this problem jvm will autometically create the salt value for the perticular key .by the salt value we can easily store and retrive the data .
+
+
+----------------------------------------collection-----------------------
+1.how linkedlist work internally?
+Internally, a linked list is implemented as a series of nodes. Each node contains a reference to the next node in the list, as well as the data that is stored in the node.
+LinkedLists are efficient when it comes to inserting or deleting elements within the list, especially in the middle. This is because you only need to update references,
+ not shift elements as in an ArrayList.

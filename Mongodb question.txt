@@ -1,0 +1,44 @@
+Sure! Here are some MongoDB-related interview questions:
+
+1. What is MongoDB?
+2. What is the difference between MongoDB and SQL databases?
+3. What is a document in MongoDB?
+4. What is a collection in MongoDB?
+5. What is a primary key in MongoDB?
+6. How does indexing work in MongoDB?
+7. What is sharding in MongoDB?
+8. Explain the concept of replica sets in MongoDB.
+9. How does MongoDB provide high availability?
+10. What are the different types of NoSQL databases, and where does MongoDB fit in?
+11. How does MongoDB handle transactions?
+12. Can you explain the read and write concerns in MongoDB?
+13. What is aggregation in MongoDB?
+14. How can you improve the performance of MongoDB?
+15. What is the purpose of the ObjectId in MongoDB?
+16. How does MongoDB handle scaling?
+17. What is the GridFS in MongoDB?
+18. How does MongoDB ensure data consistency and reliability?
+19. Explain the concept of capped collections in MongoDB.
+20. Can you perform joins in MongoDB?
+
+1. What is MongoDB and why is it used?
+2. What is the structure of a MongoDB document?
+3. How do you create a collection in MongoDB?
+4. Explain the concept of indexes in MongoDB and how they can improve query performance.
+5. What is the purpose of the `_id` field in MongoDB?
+6. How do you query documents in MongoDB?
+7. What are the different types of MongoDB queries?
+8. How do you update documents in MongoDB?
+9. What is the difference between `find()` and `findOne()` methods in MongoDB?
+10. Explain the concept of embedded documents in MongoDB.
+11. How do you perform sorting and limiting of results in MongoDB?
+12. What is the MongoDB Aggregation Framework and when would you use it?
+13. How do you perform backups and restores in MongoDB?
+14. Explain the concept of database profiling in MongoDB.
+15. What are the advantages and disadvantages of using MongoDB?
+16. How do you handle schema migrations in MongoDB?
+17. What is the difference between MongoDB and a relational database?
+18. Can you explain the concept of write concern in MongoDB?
+19. How does MongoDB handle concurrency and locking?
+20. Have you worked with any MongoDB monitoring and management tools? If so, which ones?
+

@@ -1,0 +1,215 @@
+
+
+2.why we cannot create object of interface after java 8 also?
+ans:
+	Interfaces in Java are still abstract types, and abstract types cannot be instantiated. This is because interfaces are reference 
+	types that only declare methods and constants, and do not contain any implementation. This means that a class that implements an interface
+	 must provide its own implementation for all of the methods declared in the interface.In Java 8, a new feature was introduced called 
+	default methods. Default methods are methods that are declared in an interface but have an implementation provided by the interface itself.
+	However, even though non-static methods with body can be declared in interfaces, it is still not possible to create objects of interfaces. 
+	This is because interfaces are still abstract types, and abstract types cannot be instantiated.
+3.Can an interface have instance variables? Why or why not?
+ans:
+	Yes, an interface in Java can have instance variables. interface variables are declared as static and final by default.static variables are shared 
+	by all objects that implement the interface, and final variables cannot be changed after they are initialized.
+
+4.Can an interface extend another interface? If yes, what is the benefit?
+	ans:yes,code reusibility,resuce code complexity
+5.What is a marker interface? Provide an example of a marker interface in Java.
+	ans:A marker interface is an interface that does not contain any methods or constants. It provides run-time type information about objects, so the compiler and JVM have additional 
+	information about the object. A marker interface is also called a tagging interface.
+**Marker interface is used as a tag that inform the Java compiler by a message so that it can add some special behavior to the class implementing it. Java marker interface are useful 
+if we have information about the class and that information never changes, in such cases, we use marker interface represent to represent the same. Implementing an empty interface 
+tells the compiler to do some operation
+6.What is the diffrent type of marker interface?
+7.what is shallow copy and deep copy?which is better to use?
+ 	shallow copy:Whenever you try to create a copy of an object using the shallow copy, all fields of the original objects are copied exactly. 
+	But, if it contains any objects as fields then, only references to those objects are copied not the compete objects.
+** If the original object contains mutable objects, then changes to the mutable objects in the copy will also be reflected in the original object.
+ 	This can lead to unexpected behavior and errors.hallow copy is preferred if class variables of the object are only primitive type as fields
+	Creating a new reference that points to the same memory location. This is also called a Shallow copy.
+	deep copy:
+9.what is input stream and output stream?
+	The input stream is the superclass of the I/O operation and is used for reading inputs of a user through a keyboard, file, etc. It is used to represent an input stream of bytes.
+
+10.what is clonable interface?
+11.when we use?
+ans:
+	We use Serializable in Java when we want to save an object's state to a file or database, or transmit it over a network. When an object is serialized, its state is converted into a 
+	bytestream  that can be stored or transmitted. When the object is deserialized, its state is restored from the bytestream  .
+12.Examples of Functional Interfaces: 
+        Runnable : It contains only  run()  method.The runnable class is used to perform multi-thread programming, especially in server-side as a server may be getting several
+                   requests from different clients. To tackle this in a fast and resource-efficient way, we use multi-thread programming
+        Comparable : This interface only contains the compareTo() method.
+        Callable : This interface only contains the call() method.
+                 The Callable interface in Java is used to represent a task that can be executed by a thread and returns a result. It is a functional interface,
+                which means that it has only one abstract method.
+        Consumer:  The Consumer interface is a functional interface that has a single abstract method, accept(). This method is used to consume a value.an operation that takes an argument, operates on it, and returns no result.
+                 (   names.stream().forEach(greetingConsumer);)
+        Supplier: a supplier that returns a value. The Supplier interface is a functional interface that has a single abstract method, get(). This method is used to get a value.
+                  Supplier<String> s = () -> "Hello, world!";
+
+                   String result = s.get();orElse();
+        Predicate:The Predicate interface is a functional interface that has a single abstract method, test(). This method is used to test a condition and return a boolean value.Like Filter
+        Function:Function<T, R>:  takes an argument of type T and returns a result of type R.Returns a stream consisting of the results of applying the givenfunction to the elements 
+         of this stream. like map
+13.what is multithreading?
+	Multithreading is a programming technique that allows multiple threads to run concurrently within a single process. This can improve
+	 the performance of an application by allowing multiple tasks to be executed at the same time.A thread is a lightweight process that can run concurrently with other threads. 
+	Each thread has its own stack, registers, and program counter. 
+	Increased performance: Threads can run concurrently, which can improve the performance of an application.
+	Increased scalability: Threads can be used to scale an application to handle a large number of concurrent users.
+14.what is thred?
+:`thread is a independent path of execution within a programme. a thread is a lightweight sub process that exists within a process,basically thread can maintain thee efficiency 
+of the programmne when more than one task is running,
+15.what is diff btweeeen thread and process?
+	:Thread: It simply refers to the smallest units of the particular process. It has the ability to execute different parts (referred to as thread) of the program at the same time.  
+                 Thread is mutable class A thread is a unit of execution in a program, and it can be created, modified, and destroyed. This means that a thread can be in a different state 
+		at different times, such as running, waiting, or terminated.
+	Process: It simply refers to a program that is in execution i.e., an active program. A process can be handled using PCB (Process Control Block).
+ 
+16.what is user defind thred and demon thred?
+	User Thread (Non-Daemon Thread): In Java, user threads have a specific life cycle and its life is independent of any other thread. JVM (Java Virtual Machine) waits for any of the user 
+	threads to complete its tasks before terminating it.
+	user defind thread are those thread which is responsible of task excuation,when one task is complited by thred then demon theread terminate the task.
+	 When user threads are finished, JVM terminates the whole program along with associated daemon threads. 
+	demon thred:Daemon threads are designed to provide support to other threads and terminate  the task when there are no more non-daemon threads running.
+	These threads are normally created by JVM.
+
+17.What are the wait() and sleep() methods?
+	The sleep() method is defined- in the Thread class and allows a thread to pause its execution for a specified amount of time. It is primarily 
+	used to introduce delays in a program or to simulate time-based operations.
+	wait() method:
+*** wait() method is a part of java.lang.Object class. When wait() method is called,  all the current thread stops its execution until  notify() or notifyAll() method is invoked by 
+some other Thread.
+18.What’s the difference between notify() and notifyAll()?
+   notify(): It sends a notification and wakes up only a single thread instead of multiple threads that are waiting on the object’s monitor.
+   notifyAll(): It sends notifications and wakes up all threads and allows them to compete for the object's monitor instead of a single thread. 
+19.Why wait(), notify(), and notifyAll() methods are present in Object class?
+   	The wait(), notify(), and notifyAll() methods are present in the Object class because they are used to implement synchronization in Java. they are used for inter-thread communication. 
+        By making these methods available to all classes, Java makes it easy for developers to synchronize the activities of threads.
+   	Synchronization is a mechanism that allows threads to access shared resources safely.The wait() method causes the current thread to release the lock on an object and wait for another thread to call the notify() or notifyAll()
+  	 s method on the same object. The notify() method wakes up one of the threads that is waiting on an object. The notifyAll() method wakes up all of the threads that are waiting on an object.
+
+**If these methods were defined in the Thread class, then each thread would have to know the status of every other thread. This would be very complex and error-prone. By defining these methods in the 
+Object class, Java makes it possible for threads to communicate with each other without having to know anything about each other.
+
+20.What is the start() and run() method of Thread class?
+     start method is used to start the newly created thred.when start method is called new thread is create and execute the task that is kept in run method.
+      One can call the start() method only once. 
+,     the run() method is used to start or begin the execution of the same thread. When the run() method is called, no new thread is created as in the case
+      of the start() method. This method is executed by the current thread. One can call the run() method multiple times
+***the run() :It is the code that will be executed by the thread when it is started. The run() method can contain any code that you want to execute in the thread.
+
+21. what is thred pull?
+	:It is a techniqe for managing the group of thread.Java Thread pool represents a group of worker threads, which are waiting for the job.
+
+22.What do you mean by garbage collection?
+	:Garbage Collection is process of reclaiming the runtime unused memory automatically. In other words, it is a way to destroy the unused objects.
+23.Explain the meaning of the deadlock and when it can occur?
+   	:Deadlock in Java is a part of multithreading. Deadlock can occur in a situation when a thread is waiting for an object lock, that is acquired by another thread and second thread is waiting for an object lock that is
+ 	acquired by first thread. Since, both threads are waiting for each other to release the lock, the condition is called deadlock 
+***Thread.join() method. You may use Thread.join() to guarantee that one thread finishes before starting another. For example, when one thread is reading from a file, and another is writing to the same file. Thus, 
+   a deadlock cannot arise.##Thread class that permits one thread to wait until the other thread to finish its execution
+****another way to avoid deadlock is to avoid giving a lock to multiple threads if we have already provided a lock to one thread. Since we must 
+    avoid allocating a lock to multiple threads.
+24.what is synchronization?
+	Synchronization in Java is the capability to control the access of multiple threads to any shared resource.
+	Use synchronized methods when:
+	The entire method needs to be executed atomically, without interruptions from other threads.
+	You want to simplify the synchronization process, especially when the synchronization is straightforward and applies to the entire method.
+	Use synchronized blocks when:
+	You need more fine-grained control over synchronization, such as synchronizing on different objects or locking only specific sections of code.
+	The synchronization requirement is limited to a specific block of code within a method, and the rest of the method can execute concurrently.
+25. Is it possible to call the run() method directly to start a new thread?
+	No, it's not possible at all. You need to call the start method to create a new thread otherwise run method won't create a new thread. Instead,
+      it will execute in the current thread.
+26.what is memory leak?
+	A Memory Leak is a situation where there are objects present in the heap that are no longer used, but the garbage collector is unable to remove them from memory.
+27.what is thread leakage?
+	: Thread leakage is occurs when a thread is created but never terminated due to some mismanagement, resulting in the thread occupying memory and other resources 
+	that are never released.
+29.what is volatile keyword?
+	volatile keyword is used to declare a variable whose value may be modified by diff thread  It ensures that any thread reading the volatile variable always sees the most 
+	up-to-date value written by another thread.
+30.write some keyword in lank pkg,utill pkg,io pkg?
+31.what is constructor chaining?
+	:cconstructor chaining is a mechanism in java where we call one constructor from another constuctor with in a same class or from a parent class.
+	public class Person {
+    private String name;
+    private int age;
+
+    public Person() {
+        this("John Doe"); // Call the parameterized constructor with a default name
+    }
+
+    public Person(String name) {
+        this(name, 0);  // Call the parameterized constructor with a default name and age
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+**when we call one object using constructor so first it call same class object after that super class object untill it found object class.
+32.what is race condition?
+	:race condition is a problem when more than one thread oparete on same object without proper synchronization . 
+33.what is dead lock condition?
+32.what is executor service?
+	: an ExecutorService is an interface that provides a way to execute tasks asynchronously.It is a powerful tool that can help 
+	to improve the performance  of your application.
+33.what is the life cycle of thread?
+New: In this state, a Thread class object is created using a new operator, but the thread is not alive. Thread doesn't start until we call the start() method.
+Runnable: In this state, the thread is ready to run after calling the start() method. However, the thread is not yet selected by the thread scheduler.
+Running: In this state, the thread scheduler picks the thread from the ready state, and the thread is running.
+Waiting/Blocked: In this state, a thread is not running but still alive, or it is waiting for the other thread to finish.
+Dead/Terminated: A thread is in terminated or dead state when the run() method exits.
+34.what is Hash collition?
+	:: If two or more different keys produce the same hash code and, subsequently, the same index after passing through the hash function, a collision 
+occurs. In this situation, the data structure needs to handle the collision to ensure that all elements are correctly stored and can be retrieved when needed
+This can be an efficient way to deal with hash collisions, but it can also lead to clustering, which can slow down the performance of the hash table.
+35.How the hashmap work internally?
+35.How you see that one thread will update or not?
+	:you can implement your own mechanisms to track changes to threads. Within the thread's execution logic, you can set a flag or update a variable when a modification occurs.
+
+        class MyRunnable implements Runnable {
+    private volatile boolean modified = false;
+    
+    public void run() {
+        // Your thread's logic here
+        modified = true;
+    }
+    
+    public boolean isModified() {
+        return modified;
+    }
+}
+36.what does String intern method does?
+
+String s1 = new String("hello");
+String s2 = "hello";
+String s3 = s1.intern();
+
+System.out.println(s1 == s2); // This will be false because s1 and s2 are different objects.
+System.out.println(s2 == s3); // This will be true because s2 and s3 are both references to the interned string "hello".
+
+it refer heap to pool.
+
+---------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+Write a program to check if a given number is prime.
+Write a program to reverse a string without using any built-in functions or libraries.
+Write a program to find the largest and smallest elements in an array.
+Write a program to calculate the factorial of a number.
+Write a program to check if a given string is a palindrome.
+Write a program to sort an array of integers in ascending order.
+Write a program to find the Fibonacci series up to a given number of terms.
+Write a program to find the sum of all even numbers between 1 and 100.
+Write a program to find the second largest element in an array.
+Write a program to remove duplicates from an array.
+*
+**
+***
+****
+print this programme?
